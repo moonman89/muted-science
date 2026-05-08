@@ -11,35 +11,29 @@ const signals = [
 ];
 
 const HDR = 26;
-const IMG_H = 110;
-const LBL_H = 40;
-const TOTAL = HDR + IMG_H + LBL_H;
+const IMG_H = 115;
+const LBL_H = 44;
+const FTR = 26;
 
 export default function RecentSignals() {
   return (
     <section
-      className="w-full border-b border-white/20"
-      style={{ height: TOTAL }}
+      className="w-full border-b border-white/20 flex flex-col"
+      style={{ height: HDR + IMG_H + LBL_H + FTR }}
       data-testid="section-recent-signals"
     >
-      {/* Header bar */}
+      {/* Header — label only */}
       <div
-        className="flex items-center justify-between px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
+        className="flex-shrink-0 flex items-center px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
         style={{ height: HDR }}
       >
-        <span>Recent Signals</span>
-        <Link href="/" className="hover:text-white transition-colors" data-testid="link-view-all-signals">
-          View All Signals &rarr;
-        </Link>
+        Recent Signals
       </div>
 
-      {/* Equal-width grid of 6 cards */}
+      {/* 6-column equal grid */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          height: IMG_H + LBL_H,
-        }}
+        className="flex-shrink-0"
+        style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", height: IMG_H + LBL_H }}
       >
         {signals.map((signal, i) => (
           <motion.div
@@ -52,7 +46,6 @@ export default function RecentSignals() {
             style={{ borderRight: i < signals.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none" }}
             data-testid={`signal-item-${i}`}
           >
-            {/* Image */}
             <div className="overflow-hidden flex-shrink-0" style={{ height: IMG_H }}>
               <img
                 src={signal.img}
@@ -60,20 +53,26 @@ export default function RecentSignals() {
                 className="w-full h-full object-cover grayscale opacity-65 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
               />
             </div>
-
-            {/* Label */}
             <div
               className="flex-shrink-0 flex flex-col justify-center px-2 border-t border-white/10"
               style={{ height: LBL_H }}
             >
-              <p className="text-[9px] uppercase tracking-widest text-white/85 truncate leading-tight">{signal.label}</p>
-              {signal.sub && (
-                <p className="text-[8px] uppercase tracking-widest text-white/40 truncate leading-tight">{signal.sub}</p>
-              )}
+              <p className="text-[9px] text-white/85 truncate leading-tight">{signal.label}</p>
+              {signal.sub && <p className="text-[9px] text-white/45 truncate leading-tight">{signal.sub}</p>}
               <p className="text-[8px] font-mono text-white/30 mt-0.5">{signal.date}</p>
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Footer — VIEW ALL right-aligned */}
+      <div
+        className="flex-shrink-0 flex items-center justify-end px-2 border-t border-white/20"
+        style={{ height: FTR }}
+      >
+        <Link href="/" className="text-[9px] uppercase tracking-widest text-white/50 hover:text-white transition-colors" data-testid="link-view-all-signals">
+          View All Signals &rarr;
+        </Link>
       </div>
     </section>
   );
