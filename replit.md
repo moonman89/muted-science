@@ -36,6 +36,19 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 
 _Populate as you build — explicit user instructions worth remembering across sessions._
 
+## GitHub Auto-Deploy
+
+Every push to `main` automatically triggers the CI/CD pipeline via GitHub Actions (`.github/workflows/ci.yml`). No manual deployment steps are needed — Replit commits and syncs changes to GitHub, which then triggers the workflow automatically.
+
+1. **On all pushes / PRs to main** — typechecks the entire workspace (`pnpm run typecheck`)
+2. **On push to main only** — builds the `muted-science` web app and deploys it to GitHub Pages
+
+### One-time setup (required)
+Enable GitHub Pages in the repository settings:
+- Go to **Settings → Pages**
+- Set **Source** to **GitHub Actions**
+- No further configuration needed — every subsequent push to `main` triggers a deploy automatically
+
 ## Gotchas
 
 _Populate as you build — sharp edges, "always run X before Y" rules._
