@@ -13,14 +13,14 @@ const signals = [
 export default function RecentSignals() {
   return (
     <section className="w-full border-b border-white/20 flex flex-col" data-testid="section-recent-signals">
-      <div className="px-3 py-2 border-b border-white/20 text-[10px] uppercase tracking-widest text-white/50 flex justify-between items-center flex-shrink-0">
+      <div className="px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50 flex justify-between items-center flex-shrink-0" style={{ height: "26px" }}>
         <span>Recent Signals</span>
         <Link href="/" className="hover:text-white transition-colors" data-testid="link-view-all-signals">
           View All Signals &rarr;
         </Link>
       </div>
 
-      <div className="hide-scrollbar flex overflow-x-auto divide-x divide-white/20" style={{ height: "160px" }}>
+      <div className="hide-scrollbar flex overflow-x-auto divide-x divide-white/20" style={{ height: "155px" }}>
         {signals.map((signal, i) => (
           <motion.div
             key={i}
@@ -29,17 +29,17 @@ export default function RecentSignals() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.04, duration: 0.3 }}
             className="flex-shrink-0 flex flex-col group cursor-pointer hover:bg-white/5 transition-colors"
-            style={{ width: "150px" }}
+            style={{ width: "140px" }}
             data-testid={`signal-item-${i}`}
           >
-            <div className="overflow-hidden flex-1">
+            <div className="overflow-hidden flex-1 border-b border-white/10">
               <img
                 src={signal.img}
                 alt={signal.label}
                 className="w-full h-full object-cover grayscale opacity-65 group-hover:opacity-95 group-hover:scale-105 transition-all duration-500"
               />
             </div>
-            <div className="px-2 py-1 border-t border-white/10 flex-shrink-0">
+            <div className="px-2 py-1 flex-shrink-0">
               <p className="text-[9px] uppercase tracking-widest text-white/80 leading-tight">{signal.label}</p>
               {signal.sub && <p className="text-[9px] uppercase tracking-widest text-white/40 leading-tight">{signal.sub}</p>}
               <p className="text-[8px] text-white/30 mt-0.5 font-mono">{signal.date}</p>

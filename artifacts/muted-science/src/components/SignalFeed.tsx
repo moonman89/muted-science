@@ -16,17 +16,15 @@ export default function SignalFeed() {
   };
 
   return (
-    <div className="w-full border-b border-white/20 flex flex-row text-[10px] uppercase tracking-widest divide-x divide-white/20" style={{ height: "30px" }}>
-      <div className="flex-1 px-3 flex items-center">
-        Live Signal Feed
-      </div>
-      <div className="flex-1 px-3 flex items-center justify-center font-mono whitespace-nowrap">
+    <div className="w-full border-b border-white/20 flex flex-row text-[9px] uppercase tracking-widest divide-x divide-white/20" style={{ height: "26px" }}>
+      <div className="flex-1 px-2 flex items-center whitespace-nowrap">Live Signal Feed</div>
+      <div className="flex-1 px-2 flex items-center justify-center font-mono whitespace-nowrap">
         Last Update: {formatDate(time)}
       </div>
-      <div className="flex-1 px-3 flex items-center justify-end gap-2 text-white/60">
+      <div className="flex-1 px-2 flex items-center justify-end gap-2 text-white/60 whitespace-nowrap">
         System Status: Active
         <motion.div
-          className="w-1.5 h-1.5 bg-white rounded-full flex-shrink-0"
+          className="w-1 h-1 bg-white rounded-full flex-shrink-0"
           animate={{ opacity: [1, 0.1, 1] }}
           transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
         />

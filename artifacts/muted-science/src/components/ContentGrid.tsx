@@ -2,15 +2,14 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 
 const notes = [
-  { date: "12.05.24", title: "Field Note: Kyiv Studio Visit by MS" },
-  { date: "11.05.24", title: "Object 019: Found Synthesizer in Lviv by WA" },
-  { date: "10.05.24", title: "Garment 002: Field Jacket Update by MS" },
-  { date: "09.05.24", title: "Interview: Photographer A. Fragment by MS" },
-  { date: "08.05.24", title: "Signal interference in underground spaces" },
-  { date: "07.05.24", title: "Transmission protocols for isolation" },
+  { date: "12.05.24", title: "Field Note: Kyiv Studio Visit\nby MS" },
+  { date: "11.05.24", title: "Object 019: Found Synthesizer\nin Lviv by WA" },
+  { date: "10.05.24", title: "Garment 002: Field Jacket\nUpdate by MS" },
+  { date: "09.05.24", title: "Interview: Photographer A.\nFragment by MS" },
+  { date: "08.05.24", title: "Signal interference in\nunderground spaces" },
 ];
 
-const SECTION_HEIGHT = 360;
+const SECTION_HEIGHT = 370;
 
 export default function ContentGrid() {
   return (
@@ -23,10 +22,10 @@ export default function ContentGrid() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="flex flex-col"
+        className="flex flex-col overflow-hidden"
         style={{ width: "22%" }}
       >
-        <div className="px-3 py-2 border-b border-white/20 text-[10px] uppercase tracking-widest text-white/50 flex-shrink-0">
+        <div className="px-2 py-1.5 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50 flex-shrink-0">
           Latest Notes
         </div>
         <div className="flex flex-col flex-1 overflow-hidden divide-y divide-white/10">
@@ -34,17 +33,17 @@ export default function ContentGrid() {
             <Link
               key={i}
               href="/"
-              className="px-3 py-2 group hover:bg-white/5 transition-colors flex flex-col flex-shrink-0 cursor-pointer"
+              className="px-2 py-2 group hover:bg-white/5 transition-colors flex flex-col flex-shrink-0 cursor-pointer"
               data-testid={`note-item-${i}`}
             >
               <span className="text-[9px] text-white/40 font-mono leading-none mb-0.5">{note.date}</span>
-              <span className="text-[10px] tracking-wide group-hover:underline underline-offset-2 leading-tight">{note.title}</span>
+              <span className="text-[10px] tracking-wide group-hover:underline underline-offset-2 leading-snug whitespace-pre-line">{note.title}</span>
             </Link>
           ))}
         </div>
         <Link
           href="/"
-          className="px-3 py-2 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors border-t border-white/20 flex-shrink-0"
+          className="px-2 py-1.5 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors border-t border-white/20 flex-shrink-0"
           data-testid="link-view-all-notes"
         >
           View All Notes &rarr;
@@ -60,7 +59,7 @@ export default function ContentGrid() {
         className="flex flex-col"
         style={{ width: "52%" }}
       >
-        <div className="px-3 py-2 border-b border-white/20 text-[10px] uppercase tracking-widest text-white/50 flex justify-between flex-shrink-0">
+        <div className="px-2 py-1.5 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50 flex justify-between flex-shrink-0">
           <span>Featured Project</span>
           <span>04.4</span>
         </div>
@@ -70,11 +69,11 @@ export default function ContentGrid() {
             alt="Kyiv / Body / Static"
             className="absolute inset-0 w-full h-full object-cover grayscale opacity-75 group-hover:scale-105 group-hover:opacity-95 transition-all duration-700 ease-out"
           />
-          <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/95 via-black/50 to-transparent z-10">
-            <p className="text-[9px] uppercase tracking-widest text-white/60 mb-1">Featured Project</p>
+          <div className="absolute bottom-0 left-0 right-0 px-3 py-2 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-10">
+            <p className="text-[9px] uppercase tracking-widest text-white/60 mb-0.5">Featured Project</p>
             <h2
               className="font-display uppercase leading-none text-white"
-              style={{ fontSize: "clamp(22px, 3.2vw, 44px)" }}
+              style={{ fontSize: "clamp(20px, 3vw, 38px)" }}
             >
               Kyiv / Body / Static
             </h2>
@@ -82,7 +81,7 @@ export default function ContentGrid() {
         </div>
         <Link
           href="/"
-          className="px-3 py-2 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors border-t border-white/20 flex-shrink-0"
+          className="px-2 py-1.5 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors border-t border-white/20 flex-shrink-0"
           data-testid="link-view-project"
         >
           View Project &rarr;
@@ -98,45 +97,47 @@ export default function ContentGrid() {
         className="flex flex-col"
         style={{ width: "26%" }}
       >
-        <div className="px-3 py-2 border-b border-white/20 text-[10px] uppercase tracking-widest text-white/50 flex-shrink-0">
+        <div className="px-2 py-1.5 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50 flex-shrink-0">
           Coordinates
         </div>
-        <div className="p-3 flex flex-col gap-2 flex-1 overflow-hidden">
-          {/* Map placeholder */}
+        <div className="p-2 flex flex-col gap-2 flex-1 overflow-hidden">
           <div
             className="w-full border border-white/20 relative flex items-center justify-center flex-shrink-0"
-            style={{ height: "80px", background: "repeating-linear-gradient(0deg, transparent, transparent 9px, rgba(255,255,255,0.04) 9px, rgba(255,255,255,0.04) 10px), repeating-linear-gradient(90deg, transparent, transparent 9px, rgba(255,255,255,0.04) 9px, rgba(255,255,255,0.04) 10px)" }}
+            style={{
+              height: "88px",
+              background: "repeating-linear-gradient(0deg,transparent,transparent 9px,rgba(255,255,255,0.04) 9px,rgba(255,255,255,0.04) 10px),repeating-linear-gradient(90deg,transparent,transparent 9px,rgba(255,255,255,0.04) 9px,rgba(255,255,255,0.04) 10px)"
+            }}
           >
             <div className="absolute w-[1px] h-full bg-white/15 left-1/2" />
             <div className="absolute h-[1px] w-full bg-white/15 top-1/2" />
-            <div className="w-2 h-2 border border-white/60 relative z-10" />
-            <div className="absolute top-1 left-1.5 text-[8px] font-mono text-white/30">50°N</div>
-            <div className="absolute bottom-1 right-1.5 text-[8px] font-mono text-white/30">30°E</div>
+            <div className="w-1.5 h-1.5 border border-white/60 relative z-10" />
           </div>
 
           <div className="font-mono text-[9px] text-white/60 border border-white/10 px-2 py-1 bg-white/[0.03] flex-shrink-0">
             MS://ROOM-04/SIGNAL-4489
           </div>
 
-          <div className="flex flex-col text-[9px] uppercase tracking-widest gap-2 flex-1 overflow-hidden">
+          <div className="flex flex-col text-[9px] uppercase tracking-widest gap-2 overflow-hidden">
             <div>
-              <p className="text-white/35 mb-0.5">Related Objects</p>
-              <p className="text-white/80">Object 017 &nbsp; Object 019 &nbsp; Object 022</p>
+              <p className="text-white/40 mb-0.5">Related Objects</p>
+              <p>Object 017</p>
+              <p>Object 019</p>
+              <p>Object 022</p>
             </div>
             <div>
-              <p className="text-white/35 mb-0.5">Related Rooms</p>
-              <p className="text-white/80">Room 03: Image Systems</p>
-              <p className="text-white/80">Room 06: Signals from Kyiv</p>
+              <p className="text-white/40 mb-0.5">Related Rooms</p>
+              <p>Room 03: Image Systems</p>
+              <p>Room 06: Signals from Kyiv</p>
             </div>
             <div>
-              <p className="text-white/35 mb-0.5">Related Artist</p>
-              <p className="text-white/80">A. K.</p>
+              <p className="text-white/40 mb-0.5">Related Artist</p>
+              <p>A. K.</p>
             </div>
           </div>
         </div>
         <Link
           href="/"
-          className="px-3 py-2 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors border-t border-white/20 flex-shrink-0"
+          className="px-2 py-1.5 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors border-t border-white/20 flex-shrink-0"
           data-testid="link-view-index"
         >
           View Full Index &rarr;

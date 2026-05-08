@@ -1,15 +1,15 @@
 export default function TopBar() {
   return (
-    <header className="flex flex-col md:flex-row items-center justify-between px-4 py-3 border-b border-white/20 text-[10px] md:text-[11px] uppercase tracking-widest gap-2 md:gap-0">
-      <div className="w-full md:w-1/3 flex justify-start font-bold">
+    <header className="flex flex-row items-center justify-between px-3 border-b border-white/20 text-[10px] uppercase tracking-widest" style={{ height: "32px" }}>
+      <div className="font-bold whitespace-nowrap flex-shrink-0">
         Muted Science
       </div>
-      <div className="w-full md:w-1/3 flex justify-center text-white/50 text-center">
+      <div className="flex-1 text-center text-white/50 px-4 hidden sm:block truncate">
         A creative system operating between image, object, garment and signal.
       </div>
-      <div className="w-full md:w-1/3 flex justify-end gap-6">
-        <span>Current Transmission: 04</span>
-        <span className="text-white/50 hidden md:inline">Kyiv / Body / Static</span>
+      <div className="flex items-center gap-4 flex-shrink-0">
+        <span className="whitespace-nowrap">Current Transmission: 04</span>
+        <span className="text-white/50 whitespace-nowrap hidden md:inline">Kyiv / Body / Static</span>
       </div>
     </header>
   );
