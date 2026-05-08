@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "HKEeXIaSEqe_YCLHX3149"
+uri = "file://artifacts/muted-science/public/images/hero.png"
+type = "image"
+title = "Hero dramatic dark portrait"
+
+[[generated]]
+id = "FNd1psEZG20rNhMHa9t1w"
+uri = "file://artifacts/muted-science/public/images/featured.png"
+type = "image"
+title = "Featured project silhouette"
+
+[[generated]]
+id = "5rknbqR2sSjzz51lmjphp"
+uri = "file://artifacts/muted-science/public/images/garments.png"
+type = "image"
+title = "Person in oversized jacket"
+
+[[generated]]
+id = "9GvrUC0mTOqZfhobiXN2S"
+uri = "file://artifacts/muted-science/public/images/objects.png"
+type = "image"
+title = "Vintage electronic equipment"
+
+[[generated]]
+id = "JlfeyYHalGguWZUqXgXfY"
+uri = "file://artifacts/muted-science/public/images/fieldnotes.png"
+type = "image"
+title = "Portrait with hands"
+
+[[generated]]
+id = "NZ1_i0YV5IHWIHvmXVe3M"
+uri = "file://artifacts/muted-science/public/images/people.png"
+type = "image"
+title = "Portrait in sunglasses"
+
+[[generated]]
+id = "Dcn9qS3PWcvF1In3rzN3d"
+uri = "file://artifacts/muted-science/public/images/recent-1.png"
+type = "image"
+title = "Close portrait in shadows"
+
+[[generated]]
+id = "YZxlapy-H1jDoo2YbLUKI"
+uri = "file://artifacts/muted-science/public/images/recent-2.png"
+type = "image"
+title = "Tactical field jacket flatlay"
+
+[[generated]]
+id = "_yQwe3uKJRWp3IjFLYrS1"
+uri = "file://artifacts/muted-science/public/images/recent-3.png"
+type = "image"
+title = "Abstract metallic object"
+
+[[generated]]
+id = "u6QrcUItGvFf4o6_OiPbj"
+uri = "file://artifacts/muted-science/public/images/recent-4.png"
+type = "image"
+title = "Figure in brutalist architecture"
