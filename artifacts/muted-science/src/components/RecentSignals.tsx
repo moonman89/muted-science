@@ -20,7 +20,7 @@ export default function RecentSignals() {
         </Link>
       </div>
 
-      <div className="flex overflow-x-auto divide-x divide-white/20" style={{ height: "160px" }}>
+      <div className="hide-scrollbar flex overflow-x-auto divide-x divide-white/20" style={{ height: "160px" }}>
         {signals.map((signal, i) => (
           <motion.div
             key={i}
