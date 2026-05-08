@@ -12,57 +12,57 @@ export default function Footer() {
   }, []);
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/Kyiv' });
+    return date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Kyiv" });
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "2-digit" }).replace(/\//g, ".");
   };
 
   return (
-    <footer className="w-full bg-black flex flex-col text-[11px] uppercase tracking-widest text-white/60">
-      <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/20 border-b border-white/20">
-        
+    <footer className="w-full bg-black flex flex-col text-[10px] uppercase tracking-widest text-white/50">
+      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20 border-b border-white/20">
+
         {/* Col 1 */}
-        <div className="p-6 flex flex-col gap-6">
-          <h3 className="text-white text-lg font-display tracking-widest">Muted Science</h3>
-          <p className="leading-relaxed">An ongoing research system exploring the space between culture, memory, objects and the future.</p>
+        <div className="p-4 flex flex-col gap-3">
+          <h3 className="text-white text-[11px] font-display tracking-widest">Muted Science</h3>
+          <p className="leading-relaxed text-white/50">An ongoing research system exploring the space between culture, memory, objects and the future.</p>
         </div>
 
         {/* Col 2 */}
-        <div className="p-6 flex flex-col gap-4">
-          <h4 className="text-white/40 mb-2">System</h4>
-          <Link href="/" className="hover:text-white transition-colors w-fit">About</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Contact</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Submissions</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Archive Access</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Legal</Link>
+        <div className="p-4 flex flex-col gap-2">
+          <h4 className="text-white/30 mb-1">System</h4>
+          {["About", "Contact", "Submissions", "Archive Access", "Legal"].map((item) => (
+            <Link key={item} href="/" className="hover:text-white transition-colors w-fit" data-testid={`footer-link-${item.toLowerCase().replace(" ", "-")}`}>{item}</Link>
+          ))}
         </div>
 
         {/* Col 3 */}
-        <div className="p-6 flex flex-col gap-4">
-          <h4 className="text-white/40 mb-2">Connect</h4>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Instagram</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Email</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Newsletter</Link>
-          <Link href="/" className="hover:text-white transition-colors w-fit">Sound System</Link>
+        <div className="p-4 flex flex-col gap-2">
+          <h4 className="text-white/30 mb-1">Connect</h4>
+          {["Instagram", "Email", "Newsletter", "Sound System"].map((item) => (
+            <Link key={item} href="/" className="hover:text-white transition-colors w-fit" data-testid={`footer-link-${item.toLowerCase()}`}>{item}</Link>
+          ))}
         </div>
 
         {/* Col 4 */}
-        <div className="p-6 flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white/40">Current Location</h4>
+        <div className="p-4 flex flex-col gap-3">
+          <div>
+            <h4 className="text-white/30 mb-1">Current Location</h4>
             <p className="text-white">Kyiv / Lviv / Online</p>
           </div>
-          
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white/40">System Time (EET)</h4>
-            <p className="font-mono text-white tracking-widest">{formatTime(time)}</p>
+          <div>
+            <h4 className="text-white/30 mb-1">System Time</h4>
+            <p className="font-mono text-white">{formatTime(time)}</p>
+            <p className="font-mono text-white/40 text-[9px] mt-0.5">{formatDate(time)}</p>
           </div>
-
-          <div className="w-full h-24 border border-white/20 opacity-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mt-auto flex items-center justify-center mix-blend-screen">
-             <div className="w-full h-[1px] bg-white/20" />
+          <div className="w-full border border-white/20 opacity-40 flex items-center justify-center" style={{ height: "48px" }}>
+            <div className="w-full h-[1px] bg-white/20" />
           </div>
         </div>
       </div>
 
-      <div className="p-4 flex justify-between items-center text-[10px] text-white/40">
+      <div className="px-4 py-2 flex justify-between items-center text-[9px] text-white/30">
         <span>&copy; Muted Science 2024</span>
         <span>All Transmissions Archived</span>
       </div>
