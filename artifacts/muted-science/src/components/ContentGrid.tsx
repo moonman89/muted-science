@@ -1,17 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { siteConfig } from "@/lib/siteConfig";
 
-const notes = [
-  { date: "12.05.24", title: "Field Note: Kyiv Studio Visit by MS" },
-  { date: "11.05.24", title: "Object 019: Found Synthesizer in Lviv by WA" },
-  { date: "10.05.24", title: "Garment 002: Field Jacket Update by MS" },
-  { date: "09.05.24", title: "Interview: Photographer A. Fragment by MS" },
-  { date: "08.05.24", title: "Signal interference in underground spaces" },
-];
-
-const HDR = 26;    // px — header/footer strip height
-const NOTE = 60;   // px — each note row (fixed)
-const TOTAL = HDR + NOTE * 5 + HDR; // 362px
+const HDR = 26;
+const NOTE = 60;
+const TOTAL = HDR + NOTE * 5 + HDR;
 
 export default function ContentGrid() {
   return (
@@ -28,10 +21,10 @@ export default function ContentGrid() {
           className="flex-shrink-0 flex items-center px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
           style={{ height: HDR }}
         >
-          Latest Notes
+          {siteConfig.labels.latestNotes}
         </div>
 
-        {notes.map((note, i) => (
+        {siteConfig.contentNotes.map((note, i) => (
           <Link
             key={i}
             href="/"
@@ -50,7 +43,7 @@ export default function ContentGrid() {
           style={{ height: HDR }}
           data-testid="link-view-all-notes"
         >
-          View All Notes &rarr;
+          {siteConfig.labels.viewAllNotes} &rarr;
         </Link>
       </div>
 
@@ -60,7 +53,7 @@ export default function ContentGrid() {
           className="flex-shrink-0 flex items-center justify-between px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
           style={{ height: HDR }}
         >
-          <span>Featured Project</span>
+          <span>{siteConfig.labels.featuredProject}</span>
           <span>04.4</span>
         </div>
 
@@ -71,7 +64,7 @@ export default function ContentGrid() {
             className="absolute inset-0 w-full h-full object-cover grayscale opacity-75 group-hover:scale-105 group-hover:opacity-95 transition-all duration-700 ease-out"
           />
           <div className="absolute bottom-0 left-0 right-0 px-3 py-2 bg-gradient-to-t from-black via-black/60 to-transparent z-10">
-            <p className="text-[8px] uppercase tracking-widest text-white/50 mb-0.5">Featured Project</p>
+            <p className="text-[8px] uppercase tracking-widest text-white/50 mb-0.5">{siteConfig.labels.featuredProject}</p>
             <h2 className="font-display uppercase leading-none text-white" style={{ fontSize: "clamp(18px, 2.6vw, 34px)" }}>
               Kyiv / Body / Static
             </h2>
@@ -84,7 +77,7 @@ export default function ContentGrid() {
           style={{ height: HDR }}
           data-testid="link-view-project"
         >
-          View Project &rarr;
+          {siteConfig.labels.viewProject} &rarr;
         </Link>
       </div>
 
@@ -98,7 +91,6 @@ export default function ContentGrid() {
         </div>
 
         <div className="flex-1 flex flex-col gap-2 p-2 overflow-hidden">
-          {/* Map */}
           <div
             className="w-full border border-white/20 relative flex-shrink-0 flex items-center justify-center"
             style={{
@@ -134,7 +126,7 @@ export default function ContentGrid() {
           style={{ height: HDR }}
           data-testid="link-view-index"
         >
-          View Full Index &rarr;
+          {siteConfig.labels.viewFullIndex} &rarr;
         </Link>
       </div>
     </motion.section>

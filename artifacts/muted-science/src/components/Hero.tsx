@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { siteConfig } from "@/lib/siteConfig";
+
+const opacities = ["text-white", "text-white/65", "text-white/35", "text-white"];
 
 export default function Hero() {
+  const lines = [siteConfig.hero.issueCode, ...siteConfig.hero.lines];
+
   return (
     <section
       className="relative w-full border-b border-white/20 overflow-hidden bg-black"
@@ -22,17 +27,16 @@ export default function Hero() {
             className="font-display uppercase leading-none mb-2"
             style={{ fontSize: "clamp(36px, 5vw, 68px)", lineHeight: 0.9 }}
           >
-            <span className="block text-white">Transmission 04</span>
-            <span className="block text-white/65">The Body</span>
-            <span className="block text-white/35">Stores</span>
-            <span className="block text-white">Signal.</span>
+            {lines.map((line, i) => (
+              <span key={i} className={`block ${opacities[i] ?? "text-white"}`}>{line}</span>
+            ))}
           </h1>
           <Link
             href="/"
             className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest hover:underline underline-offset-4 mt-1"
             data-testid="link-enter-archive"
           >
-            Enter Archive &rarr;
+            {siteConfig.hero.cta} &rarr;
           </Link>
         </motion.div>
       </div>

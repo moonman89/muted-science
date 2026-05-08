@@ -1,13 +1,10 @@
 import { Link } from "wouter";
-
-const links = [
-  "Signal", "Archive", "Garments", "Objects", "Field Notes", "People", "Search",
-];
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function Navigation() {
   return (
     <nav className="w-full border-b border-white/20 flex text-[10px] uppercase tracking-wider" style={{ height: "28px" }}>
-      {links.map((label) => (
+      {siteConfig.nav.links.map((label, i) => (
         <Link
           key={label}
           href="/"
