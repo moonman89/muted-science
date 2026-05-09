@@ -29,19 +29,23 @@ svg {
 
 .ms-shell {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1680px;
   margin: 0 auto;
   overflow-x: hidden;
 }
 
 .ms-topbar {
-  min-height: 32px;
+  min-height: 30px;
+}
+
+.ms-topbar__tagline {
+  display: none !important;
 }
 
 .ms-nav {
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
-  min-height: 28px;
+  min-height: 30px;
 }
 
 .ms-nav a,
@@ -65,7 +69,7 @@ svg {
 }
 
 .ms-hero {
-  min-height: clamp(260px, 34vw, 380px);
+  min-height: clamp(300px, 34vw, 480px);
 }
 
 .ms-signal-feed {
@@ -76,8 +80,14 @@ svg {
 
 .ms-content-grid {
   display: grid;
-  grid-template-columns: minmax(180px, 22%) minmax(0, 52%) minmax(220px, 26%);
-  min-height: 352px;
+  grid-template-columns: minmax(230px, 32%) minmax(0, 68%);
+  min-height: 420px;
+}
+
+.ms-content-grid__coordinates {
+  grid-column: 1 / -1;
+  min-height: 210px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .ms-recent-signals-grid {
@@ -108,41 +118,30 @@ svg {
   filter: grayscale(1) contrast(1.1);
 }
 
+@media (min-width: 1181px) {
+  .ms-content-grid {
+    grid-template-columns: minmax(260px, 28%) minmax(0, 72%);
+  }
+}
+
 @media (max-width: 1180px) {
   .ms-topbar {
-    align-items: stretch;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: auto !important;
-  }
-
-  .ms-topbar__tagline {
-    grid-column: 1 / -1;
-    order: 3;
-    padding: 7px 0 0;
-    text-align: left;
+    gap: 14px;
   }
 
   .ms-nav {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     height: auto !important;
   }
 
   .ms-nav a {
     min-height: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-  }
-
-  .ms-content-grid {
-    grid-template-columns: minmax(200px, 34%) minmax(0, 66%);
-  }
-
-  .ms-content-grid__coordinates {
-    grid-column: 1 / -1;
-    min-height: 190px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 8px;
+    letter-spacing: 0.08em;
   }
 
   .ms-recent-signals-grid {
@@ -165,20 +164,11 @@ svg {
   }
 
   .ms-topbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
     min-height: 34px;
     padding-top: 0;
     padding-bottom: 0;
     font-size: 9px;
     letter-spacing: 0.14em;
-  }
-
-  .ms-topbar__tagline {
-    display: none !important;
   }
 
   .ms-topbar__right {
@@ -199,6 +189,7 @@ svg {
     padding-right: 4px;
     font-size: 8px;
     letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .ms-hero {
@@ -229,6 +220,10 @@ svg {
 
   .ms-content-grid__featured {
     min-height: 320px;
+  }
+
+  .ms-content-grid__coordinates {
+    min-height: 220px;
   }
 
   .ms-recent-signals-grid {
