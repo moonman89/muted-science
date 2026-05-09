@@ -142,29 +142,6 @@ export default function ReleaseMS001() {
         </section>
 
         <section className="border-b border-white/20">
-          <div className="flex min-h-[28px] items-center border-b border-white/20 px-3 text-[9px] uppercase tracking-widest text-white/45">
-            Preview Images / Public Samples
-          </div>
-          <div className="grid md:grid-cols-3">
-            {product.previewImages.map((image, index) => (
-              <article key={image} className="group border-b border-r border-white/20 md:border-b-0">
-                <div className="aspect-[4/3] overflow-hidden bg-white/[0.02]">
-                  <img
-                    src={image}
-                    alt={`${product.displayTitle} preview ${index + 1}`}
-                    className="h-full w-full object-cover grayscale opacity-70 transition duration-500 group-hover:scale-105 group-hover:opacity-95"
-                  />
-                </div>
-                <div className="flex h-8 items-center justify-between px-3 text-[9px] uppercase tracking-widest text-white/45">
-                  <span>Preview {String(index + 1).padStart(2, "0")}</span>
-                  <span>MS-001</span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="border-b border-white/20">
           {pageSections.map((section, index) => (
             <article key={section.title} className="grid border-b border-white/20 last:border-b-0 md:grid-cols-[0.34fr_0.66fr]">
               <div className="border-b border-white/20 p-4 md:border-b-0 md:border-r md:p-5">
