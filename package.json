@@ -4,7 +4,11 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "dev": "cd artifacts/muted-science && PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-/} pnpm dev",
+    "dev:muted-science": "cd artifacts/muted-science && PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-/} pnpm dev",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "build:muted-science": "cd artifacts/muted-science && PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-/} pnpm build",
+    "serve:muted-science": "cd artifacts/muted-science && PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-/} pnpm serve",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
