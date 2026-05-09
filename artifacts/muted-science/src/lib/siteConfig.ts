@@ -40,6 +40,38 @@ export const siteConfig = {
     viewFullIndex: "View Full Index",
   },
 
+  releaseProducts: {
+    ms001: {
+      code: "MS-001",
+      slug: "ms-001-pronounced-love",
+      title: "Pronounced Love",
+      displayTitle: "MS-001 — PRONOUNCED LOVE",
+      format: "Digital PDF Workbook",
+      price: "$22",
+      availability: "Digital PDF available now.",
+      checkoutUrl: "PASTE_CHECKOUT_LINK_HERE",
+      acquireLabel: "Acquire PDF",
+      previewImages: [
+        "/images/fieldnotes.png",
+        "/images/objects.png",
+        "/images/recent-4.png",
+      ],
+      copy: [
+        "A private system released as a daily PDF workbook.",
+        "A study on truth, regulation, emotional awareness, repetition, guilt, action, and integration.",
+        "62 days.",
+        "Reflect. Write. Act. Integrate.",
+        "Digital PDF available now.",
+      ],
+      metadata: [
+        { label: "Release", value: "MS-001" },
+        { label: "System", value: "Pronounced Love" },
+        { label: "Duration", value: "62 days" },
+        { label: "Format", value: "Private PDF Workbook" },
+      ],
+    },
+  },
+
   recentSignals: [
     { label: "Transmission 03", sub: "", img: "/images/recent-1.png", date: "09.05.24" },
     { label: "OBJECT 001", sub: "Field Shirt", img: "/images/recent-2.png", date: "08.05.24" },
