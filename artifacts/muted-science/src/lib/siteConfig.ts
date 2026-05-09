@@ -48,9 +48,9 @@ export const siteConfig = {
       title: "Pronounced Love",
       displayTitle: "MS-001 — PRONOUNCED LOVE",
       format: "Digital PDF Workbook",
-      price: "$22",
+      price: "$38",
       availability: "Digital PDF available now.",
-      checkoutUrl: "PASTE_CHECKOUT_LINK_HERE",
+      checkoutUrl: "/checkout/ms-001",
       acquireLabel: "Acquire PDF",
       previewImages: [
         "/images/fieldnotes.png",

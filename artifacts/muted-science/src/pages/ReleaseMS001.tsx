@@ -3,6 +3,18 @@ import { siteConfig } from "@/lib/siteConfig";
 
 const product = siteConfig.releaseProducts.ms001;
 
+function PurchasedBanner() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("purchased") !== "true") return null;
+  return (
+    <div className="border-b border-white/20 bg-white px-4 py-4 text-center">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-black">
+        Purchase complete — the PDF has been sent to your email.
+      </p>
+    </div>
+  );
+}
+
 const pageSections = [
   {
     title: "Who This Is For",
@@ -10,7 +22,7 @@ const pageSections = [
       "For the person caught between awareness and behavior.",
       "You already know the pattern.",
       "You already know the damage.",
-      "You already know when you’re acting out of alignment.",
+      "You already know when you're acting out of alignment.",
       "The issue is not information.",
       "The issue is repetition.",
       "This workbook gives that repetition a structure.",
@@ -26,7 +38,7 @@ const pageSections = [
     ],
   },
   {
-    title: "What’s Inside",
+    title: "What's Inside",
     lines: [
       "01 / TRUTH — Breaking point. Two selves. Pain as compass. Pattern mapping.",
       "02 / REGULATION — The wave. Breath. Body awareness. Internal safety. Crisis protocol.",
@@ -49,7 +61,7 @@ const pageSections = [
   },
   {
     title: "Delivery",
-    lines: ["After purchase, the PDF is delivered through a secure checkout link."],
+    lines: ["After purchase, the PDF is delivered to your email immediately."],
   },
   {
     title: "Note / Disclaimer",
@@ -63,6 +75,7 @@ export default function ReleaseMS001() {
   return (
     <main className="ms-page min-h-[100dvh] bg-black text-white selection:bg-white selection:text-black">
       <div className="ms-shell border-x border-white/20">
+        <PurchasedBanner />
         <header className="border-b border-white/20">
           <div className="flex min-h-[32px] items-center justify-between gap-4 px-3 text-[10px] uppercase tracking-widest">
             <Link href="/" className="font-bold hover:underline underline-offset-4">
@@ -80,9 +93,9 @@ export default function ReleaseMS001() {
             <Link href="/#archive" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
               Archive
             </Link>
-            <a href={product.checkoutUrl} className="px-3 py-3 hover:bg-white hover:text-black">
+            <Link href={product.checkoutUrl} className="px-3 py-3 hover:bg-white hover:text-black">
               {product.acquireLabel}
-            </a>
+            </Link>
           </nav>
         </header>
 
@@ -131,12 +144,12 @@ export default function ReleaseMS001() {
                 <p className="text-white/35">Price</p>
                 <p className="mt-2 text-2xl text-white">{product.price}</p>
               </div>
-              <a
+              <Link
                 href={product.checkoutUrl}
                 className="flex min-w-[190px] items-center justify-center border-l border-white/20 px-5 text-center hover:bg-white hover:text-black"
               >
                 {product.acquireLabel} &rarr;
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -170,12 +183,12 @@ export default function ReleaseMS001() {
               <p className="text-white/35">Price</p>
               <p className="mt-2 text-2xl text-white">{product.price}</p>
             </div>
-            <a
+            <Link
               href={product.checkoutUrl}
               className="flex min-w-[190px] items-center justify-center border-l border-white/20 px-5 text-center hover:bg-white hover:text-black"
             >
               {product.acquireLabel} &rarr;
-            </a>
+            </Link>
           </div>
         </section>
 
