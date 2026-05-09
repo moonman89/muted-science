@@ -23,7 +23,7 @@ export default function RecentSignals() {
       <div className="ms-recent-signals-grid flex-shrink-0">
         {siteConfig.recentSignals.map((signal, i) => (
           <motion.a
-            href="#releases"
+            href={signal.href || "#releases"}
             key={`${signal.label}-${i}`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -57,7 +57,7 @@ export default function RecentSignals() {
         className="flex-shrink-0 flex items-center justify-end px-2 border-t border-white/20"
         style={{ height: FTR }}
       >
-        <Link href="#releases" className="ms-cta-row text-[9px] uppercase tracking-widest text-white/50 hover:text-white transition-colors" data-testid="link-view-all-signals">
+        <Link href={siteConfig.releaseProducts.ms001.href} className="ms-cta-row text-[9px] uppercase tracking-widest text-white/50 hover:text-white transition-colors" data-testid="link-view-all-signals">
           {siteConfig.labels.viewAllSignals} &rarr;
         </Link>
       </div>
