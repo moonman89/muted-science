@@ -28,6 +28,7 @@ if (!basePath) {
 
 export default defineConfig({
   base: basePath,
+  cacheDir: path.resolve(import.meta.dirname, ".cache/vite"),
   plugins: [
     react(),
     tailwindcss(),

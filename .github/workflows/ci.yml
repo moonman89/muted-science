@@ -36,6 +36,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
+      - name: Cache TypeScript build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/*/dist
+            **/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-${{ hashFiles('lib/*/src/**', 'lib/*/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsbuild-
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -82,6 +92,25 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+
+      - name: Cache TypeScript build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/*/dist
+            **/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-${{ hashFiles('lib/*/src/**', 'lib/*/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsbuild-
+
+      - name: Cache Vite build cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            artifacts/muted-science/.cache/vite
+          key: ${{ runner.os }}-vite-${{ hashFiles('artifacts/muted-science/src/**', 'artifacts/muted-science/index.html', 'artifacts/muted-science/vite.config.ts', 'artifacts/muted-science/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-vite-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
