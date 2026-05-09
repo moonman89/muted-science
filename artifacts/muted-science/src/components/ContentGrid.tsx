@@ -4,7 +4,6 @@ import { siteConfig } from "@/lib/siteConfig";
 
 const HDR = 26;
 const NOTE = 60;
-const TOTAL = HDR + NOTE * 5 + HDR;
 
 export default function ContentGrid() {
   return (
@@ -12,11 +11,9 @@ export default function ContentGrid() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="w-full border-b border-white/20"
-      style={{ height: TOTAL, display: "grid", gridTemplateColumns: "22% 52% 26%" }}
+      className="ms-content-grid w-full border-b border-white/20"
     >
-      {/* ── Left: Notes ── */}
-      <div className="flex flex-col border-r border-white/20 overflow-hidden">
+      <div className="flex flex-col border-r border-white/20 overflow-hidden min-w-0">
         <div
           className="flex-shrink-0 flex items-center px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
           style={{ height: HDR }}
@@ -27,19 +24,19 @@ export default function ContentGrid() {
         {siteConfig.contentNotes.map((note, i) => (
           <Link
             key={i}
-            href="/"
-            className="flex-shrink-0 flex flex-col justify-center px-2 border-b border-white/10 group hover:bg-white/5 transition-colors overflow-hidden"
+            href="#archive"
+            className="ms-card-link flex-shrink-0 flex flex-col justify-center px-2 border-b border-white/10 group hover:bg-white/5 hover:text-white transition-colors overflow-hidden"
             style={{ height: NOTE }}
             data-testid={`note-item-${i}`}
           >
             <span className="text-[9px] text-white/40 font-mono leading-none mb-1">{note.date}</span>
-            <span className="text-[10px] leading-tight group-hover:underline underline-offset-2 line-clamp-2">{note.title}</span>
+            <span className="text-[10px] leading-tight group-hover:underline underline-offset-2 ms-clamp-2">{note.title}</span>
           </Link>
         ))}
 
         <Link
-          href="/"
-          className="flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors mt-auto"
+          href="#archive"
+          className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors mt-auto"
           style={{ height: HDR }}
           data-testid="link-view-all-notes"
         >
@@ -47,17 +44,16 @@ export default function ContentGrid() {
         </Link>
       </div>
 
-      {/* ── Center: Featured ── */}
-      <div className="flex flex-col border-r border-white/20 overflow-hidden">
+      <div className="ms-content-grid__featured ms-feature-card flex flex-col border-r border-white/20 overflow-hidden min-w-0">
         <div
-          className="flex-shrink-0 flex items-center justify-between px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
+          className="flex-shrink-0 flex items-center justify-between gap-3 px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
           style={{ height: HDR }}
         >
-          <span>{siteConfig.labels.featuredProject}</span>
-          <span>04.4</span>
+          <span className="truncate">{siteConfig.labels.featuredProject}</span>
+          <span className="shrink-0">04.4</span>
         </div>
 
-        <div className="flex-1 relative overflow-hidden cursor-pointer group">
+        <a href="#archive" className="flex-1 relative overflow-hidden cursor-pointer group min-h-[260px]">
           <img
             src="/images/featured.png"
             alt="Kyiv / Body / Static"
@@ -69,11 +65,11 @@ export default function ContentGrid() {
               Kyiv / Body / Static
             </h2>
           </div>
-        </div>
+        </a>
 
         <Link
-          href="/"
-          className="flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
+          href="#archive"
+          className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
           style={{ height: HDR }}
           data-testid="link-view-project"
         >
@@ -81,8 +77,7 @@ export default function ContentGrid() {
         </Link>
       </div>
 
-      {/* ── Right: Coordinates ── */}
-      <div className="flex flex-col overflow-hidden">
+      <div className="ms-content-grid__coordinates flex flex-col overflow-hidden min-w-0">
         <div
           className="flex-shrink-0 flex items-center px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
           style={{ height: HDR }}
@@ -111,7 +106,7 @@ export default function ContentGrid() {
 
           <div className="flex flex-col gap-1.5 text-[9px] uppercase tracking-widest overflow-hidden">
             <p className="text-white/40">Related Objects</p>
-            <p className="text-white/75">Object 017 &nbsp; Object 019 &nbsp; Object 022</p>
+            <p className="text-white/75 ms-clamp-2">Object 017 &nbsp; Object 019 &nbsp; Object 022</p>
             <p className="text-white/40 mt-0.5">Related Rooms</p>
             <p className="text-white/75 truncate">Room 03: Image Systems</p>
             <p className="text-white/75 truncate">Room 06: Signals from Kyiv</p>
@@ -121,8 +116,8 @@ export default function ContentGrid() {
         </div>
 
         <Link
-          href="/"
-          className="flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
+          href="#index"
+          className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
           style={{ height: HDR }}
           data-testid="link-view-index"
         >
