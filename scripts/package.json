@@ -5,13 +5,7 @@
   "type": "module",
   "scripts": {
     "hello": "tsx ./src/hello.ts",
-    "seed-products": "tsx ./src/seed-products.ts",
-    "update-price": "tsx ./src/update-price.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
-  },
-  "dependencies": {
-    "stripe": "catalog:",
-    "stripe-replit-sync": "*"
   },
   "devDependencies": {
     "@types/node": "catalog:",
