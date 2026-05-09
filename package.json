@@ -10,14 +10,18 @@
     "build:muted-science": "cd artifacts/muted-science && PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-/} pnpm build",
     "serve:muted-science": "cd artifacts/muted-science && PORT=${PORT:-8080} BASE_PATH=${BASE_PATH:-/} pnpm serve",
     "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
+    "test": "vitest run"
   },
   "private": true,
   "devDependencies": {
     "prettier": "^3.8.1",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "vitest": "^4.1.5"
   },
   "dependencies": {
-    "@replit/connectors-sdk": "^0.4.0"
+    "@replit/connectors-sdk": "^0.4.0",
+    "stripe": "^22.1.1",
+    "stripe-replit-sync": "^1.0.0"
   }
 }
