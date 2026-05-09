@@ -9,16 +9,26 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-[100dvh] bg-black text-white w-full overflow-x-hidden selection:bg-white selection:text-black">
+    <main id="current" className="min-h-[100dvh] bg-black text-white w-full overflow-x-hidden selection:bg-white selection:text-black">
       <div className="max-w-screen-3xl mx-auto border-x border-white/20">
         <TopBar />
         <Navigation />
         <Hero />
         <SignalFeed />
-        <ContentGrid />
-        <RecentSignals />
-        <CategoryGrid />
-        <Footer />
+        <section id="archive">
+          <ContentGrid />
+        </section>
+        <section id="releases">
+          <RecentSignals />
+        </section>
+        <section id="objects">
+          <CategoryGrid />
+        </section>
+        <section id="process" aria-hidden="true" />
+        <section id="collaborators" aria-hidden="true" />
+        <section id="index">
+          <Footer />
+        </section>
       </div>
     </main>
   );
