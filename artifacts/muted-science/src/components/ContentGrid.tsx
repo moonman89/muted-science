@@ -6,6 +6,8 @@ const HDR = 26;
 const NOTE = 60;
 
 export default function ContentGrid() {
+  const featuredRelease = siteConfig.releaseProducts.ms001;
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -49,31 +51,35 @@ export default function ContentGrid() {
           className="flex-shrink-0 flex items-center justify-between gap-3 px-2 border-b border-white/20 text-[9px] uppercase tracking-widest text-white/50"
           style={{ height: HDR }}
         >
-          <span className="truncate">{siteConfig.labels.featuredProject}</span>
-          <span className="shrink-0">04.4</span>
+          <span className="truncate">Featured Release</span>
+          <span className="shrink-0">{featuredRelease.code}</span>
         </div>
 
-        <a href="#archive" className="flex-1 relative overflow-hidden cursor-pointer group min-h-[260px]">
+        <Link href={featuredRelease.href} className="flex-1 relative overflow-hidden cursor-pointer group min-h-[260px]">
           <img
-            src="/images/featured.png"
-            alt="Kyiv / Body / Static"
+            src={featuredRelease.previewImages[0]}
+            alt={featuredRelease.displayTitle}
             className="absolute inset-0 w-full h-full object-cover grayscale opacity-75 group-hover:scale-105 group-hover:opacity-95 transition-all duration-700 ease-out"
           />
-          <div className="absolute bottom-0 left-0 right-0 px-3 py-2 bg-gradient-to-t from-black via-black/60 to-transparent z-10">
-            <p className="text-[8px] uppercase tracking-widest text-white/50 mb-0.5">{siteConfig.labels.featuredProject}</p>
-            <h2 className="font-display uppercase leading-none text-white" style={{ fontSize: "clamp(18px, 2.6vw, 34px)" }}>
-              Kyiv / Body / Static
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 px-3 py-2 z-10">
+            <p className="text-[8px] uppercase tracking-widest text-white/50 mb-1">{featuredRelease.format}</p>
+            <h2 className="font-display uppercase leading-none text-white" style={{ fontSize: "clamp(20px, 2.8vw, 38px)" }}>
+              MS-001 / Pronounced Love
             </h2>
+            <p className="mt-2 max-w-xl text-[9px] uppercase tracking-widest text-white/55">
+              62 days / Reflect. Write. Act. Integrate.
+            </p>
           </div>
-        </a>
+        </Link>
 
         <Link
-          href="#archive"
+          href={featuredRelease.href}
           className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
           style={{ height: HDR }}
           data-testid="link-view-project"
         >
-          {siteConfig.labels.viewProject} &rarr;
+          View Release &rarr;
         </Link>
       </div>
 
@@ -101,27 +107,27 @@ export default function ContentGrid() {
           </div>
 
           <div className="font-mono text-[9px] text-white/60 border border-white/10 px-2 py-1 bg-white/[0.03] flex-shrink-0 truncate">
-            MS://ROOM-04/SIGNAL-4489
+            MS://RELEASE-001/PRONOUNCED-LOVE
           </div>
 
           <div className="flex flex-col gap-1.5 text-[9px] uppercase tracking-widest overflow-hidden">
-            <p className="text-white/40">Related Objects</p>
-            <p className="text-white/75 ms-clamp-2">Object 017 &nbsp; Object 019 &nbsp; Object 022</p>
-            <p className="text-white/40 mt-0.5">Related Rooms</p>
-            <p className="text-white/75 truncate">Room 03: Image Systems</p>
-            <p className="text-white/75 truncate">Room 06: Signals from Kyiv</p>
-            <p className="text-white/40 mt-0.5">Related Artist</p>
-            <p className="text-white/75">A. K.</p>
+            <p className="text-white/40">Related System</p>
+            <p className="text-white/75 ms-clamp-2">Truth &nbsp; Regulation &nbsp; Integration</p>
+            <p className="text-white/40 mt-0.5">Format</p>
+            <p className="text-white/75 truncate">Digital PDF Workbook</p>
+            <p className="text-white/75 truncate">62 Day Private System</p>
+            <p className="text-white/40 mt-0.5">Status</p>
+            <p className="text-white/75">Available Now</p>
           </div>
         </div>
 
         <Link
-          href="#index"
+          href={featuredRelease.href}
           className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
           style={{ height: HDR }}
           data-testid="link-view-index"
         >
-          {siteConfig.labels.viewFullIndex} &rarr;
+          Acquire PDF &rarr;
         </Link>
       </div>
     </motion.section>
