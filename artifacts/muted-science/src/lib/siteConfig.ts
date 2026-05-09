@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Muted Science",
   tagline: "A CREATIVE RESEARCH PLATFORM FOR OBJECTS, IMAGES, GARMENTS, AND INTERNAL SYSTEMS.",
-  currentTransmission: "04",
-  currentLocation: "Kyiv / Lviv / Online",
+  currentTransmission: "01",
+  currentLocation: "Online",
   contactEmail: "mutedscience@icloud.com",
 
   nav: {
@@ -18,9 +18,9 @@ export const siteConfig = {
   },
 
   hero: {
-    issueCode: "MS-004",
-    lines: ["THE BODY", "BECOMES", "SIGNAL."],
-    cta: "Enter Archive",
+    issueCode: "MS-001",
+    lines: ["PRONOUNCED", "LOVE", "WORKBOOK."],
+    cta: "Open MS-001 Project",
   },
 
   categories: [
@@ -31,12 +31,12 @@ export const siteConfig = {
   ],
 
   labels: {
-    featuredProject: "Featured Study",
+    featuredProject: "Featured Release",
     latestNotes: "Latest Notes",
     recentSignals: "Recent Signals",
     viewAllNotes: "View All Notes",
     viewAllSignals: "View All Releases",
-    viewProject: "View Project",
+    viewProject: "View Release",
     viewFullIndex: "View Full Index",
   },
 
