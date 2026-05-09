@@ -2,14 +2,13 @@ import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
 
 const HDR = 26;
-const IMG_H = 190;
-const FTR = 26;
+const IMG_H = 210;
+const FTR = 28;
 
 export default function CategoryGrid() {
   return (
     <section
-      className="w-full border-b border-white/20"
-      style={{ height: HDR + IMG_H + FTR, display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}
+      className="ms-category-grid w-full border-b border-white/20"
       data-testid="section-categories"
     >
       {siteConfig.categories.map((cat, i) => (
@@ -19,8 +18,7 @@ export default function CategoryGrid() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.06 }}
-          className="flex flex-col group overflow-hidden"
-          style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.2)" : "none" }}
+          className="ms-category-card flex flex-col group overflow-hidden border-r border-b border-white/20"
           data-testid={`category-${cat.name.toLowerCase().replace(" ", "-")}-${i}`}
         >
           <div
@@ -41,7 +39,7 @@ export default function CategoryGrid() {
 
           <a
             href={cat.href}
-            className="flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
+            className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
             style={{ height: FTR }}
             data-testid={`link-view-${cat.name.toLowerCase().replace(" ", "-")}-${i}`}
           >
