@@ -2,19 +2,23 @@ import { siteConfig } from "@/lib/siteConfig";
 
 export default function Navigation() {
   return (
-    <nav className="w-full border-b border-white/20 flex text-[10px] uppercase tracking-wider" style={{ height: "28px" }}>
+    <nav className="ms-nav w-full border-b border-white/20 text-[10px] uppercase tracking-wider">
       {siteConfig.nav.links.map((link) => (
         <a
           key={link.label}
           href={link.href}
-          className="flex-1 flex items-center justify-center border-r border-white/20 hover:bg-white hover:text-black transition-colors whitespace-nowrap px-1"
+          className="flex min-w-0 items-center justify-center border-r border-white/20 px-1 text-center leading-none hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black focus-visible:outline-none"
           data-testid={`nav-link-${link.label.toLowerCase().replace(" ", "-")}`}
         >
-          {link.label}
+          <span className="truncate">{link.label}</span>
         </a>
       ))}
-      <a href="#releases" className="px-3 flex items-center hover:bg-white hover:text-black transition-colors whitespace-nowrap" data-testid="nav-link-cart">
-        Cart (0)
+      <a
+        href="#releases"
+        className="flex min-w-0 items-center justify-center px-2 text-center leading-none hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black focus-visible:outline-none"
+        data-testid="nav-link-cart"
+      >
+        <span className="truncate">Cart (0)</span>
       </a>
     </nav>
   );
