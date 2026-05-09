@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function Footer() {
   const [time, setTime] = useState(new Date());
@@ -21,45 +21,42 @@ export default function Footer() {
         className="w-full border-b border-white/20"
         style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}
       >
-        {/* Col 1 — Brand */}
-        <div
-          className="flex flex-col p-3 gap-2 border-r border-white/20"
-        >
-          <p className="text-white font-bold text-[10px]">Muted Science</p>
+        <div className="flex flex-col p-3 gap-2 border-r border-white/20">
+          <p className="text-white font-bold text-[10px]">{siteConfig.name}</p>
           <p className="text-white/50 leading-relaxed normal-case text-[9px]">
-            An ongoing research system exploring the space between culture, memory, objects and the future.
+            {siteConfig.footer.description}
           </p>
-          <p className="text-white/25 mt-auto text-[8px]">&copy; Muted Science 2024</p>
+          <p className="text-white/25 mt-auto text-[8px]">{siteConfig.footer.copyright}</p>
         </div>
 
-        {/* Col 2 — System */}
         <div className="flex flex-col p-3 gap-1.5 border-r border-white/20">
           <p className="text-white/35 mb-1">System</p>
-          {["About", "Contact", "Submissions", "Archive Access", "Legal"].map((item) => (
-            <Link key={item} href="/" className="text-white/60 hover:text-white transition-colors w-fit">{item}</Link>
+          {siteConfig.footer.system.map((item) => (
+            <a key={item.label} href={item.href} className="text-white/60 hover:text-white transition-colors w-fit">
+              {item.label}
+            </a>
           ))}
         </div>
 
-        {/* Col 3 — Connect */}
         <div className="flex flex-col p-3 gap-1.5 border-r border-white/20">
           <p className="text-white/35 mb-1">Connect</p>
-          {["Instagram", "Email", "Newsletter", "Sound System"].map((item) => (
-            <Link key={item} href="/" className="text-white/60 hover:text-white transition-colors w-fit">{item}</Link>
+          {siteConfig.footer.connect.map((item) => (
+            <a key={item.label} href={item.href} className="text-white/60 hover:text-white transition-colors w-fit">
+              {item.label}
+            </a>
           ))}
         </div>
 
-        {/* Col 4 — Location + Crosshair */}
         <div className="flex flex-col p-3 gap-2">
           <div>
             <p className="text-white/35 mb-1">Current Location</p>
-            <p className="text-white/80">Kyiv / Lviv / Online</p>
+            <p className="text-white/80">{siteConfig.currentLocation}</p>
           </div>
           <div>
             <p className="text-white/35 mb-1">System Time</p>
             <p className="font-mono text-white text-[11px]">{formatTime(time)}</p>
             <p className="font-mono text-white/40 text-[8px] mt-0.5">{formatDate(time)}</p>
           </div>
-          {/* Crosshair graphic */}
           <div className="mt-auto flex items-center gap-2">
             <div className="flex items-center gap-1 text-white/30 font-mono text-[10px] select-none">
               <span>&#8212;</span>
