@@ -1,6 +1,15 @@
 import Stripe from 'stripe';
 
 async function getCredentials(): Promise<{ publishableKey: string; secretKey: string }> {
+  // In production (or when keys are pre-loaded as env vars), use them directly.
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+
+  if (secretKey && publishableKey) {
+    return { secretKey, publishableKey };
+  }
+
+  // Fallback: fetch via Replit connectors proxy (works in dev container)
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY
     ? 'repl ' + process.env.REPL_IDENTITY
@@ -10,8 +19,8 @@ async function getCredentials(): Promise<{ publishableKey: string; secretKey: st
 
   if (!hostname || !xReplitToken) {
     throw new Error(
-      'Missing Replit environment variables. ' +
-      'Ensure the Stripe integration is connected via the Integrations tab.'
+      'Stripe credentials not found. Set STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY ' +
+      'environment variables, or connect Stripe via the Integrations tab.'
     );
   }
 

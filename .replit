@@ -35,3 +35,9 @@ externalPort = 3000
 [nix]
 channel = "stable-25_05"
 packages = ["psmisc"]
+
+[userenv]
+
+[userenv.shared]
+STRIPE_SECRET_KEY = "sk_test_51TUyw1A1DpVtTo0sqzzEP3Q6RxcbaQMxA8iUZbPL1jasfpOZ0lLxEynzUYVFKUrF1gYmmTbhFRabvejPf5sBNGxm00ncQalsnm"
+STRIPE_PUBLISHABLE_KEY = "pk_test_51TUyw1A1DpVtTo0sljpEToMKIafotyhImPY2GFmZDDZ4XV12fgMOmiPc9VbUw2eKW5gLkqE4KTDLNZjKl95OdyiT00KUOhDCMh"
