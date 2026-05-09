@@ -35,7 +35,7 @@ export const siteConfig = {
     latestNotes: "Latest Notes",
     recentSignals: "Recent Signals",
     viewAllNotes: "View All Notes",
-    viewAllSignals: "View All Signals",
+    viewAllSignals: "View All Releases",
     viewProject: "View Project",
     viewFullIndex: "View Full Index",
   },
@@ -44,6 +44,7 @@ export const siteConfig = {
     ms001: {
       code: "MS-001",
       slug: "ms-001-pronounced-love",
+      href: "/releases/ms-001-pronounced-love",
       title: "Pronounced Love",
       displayTitle: "MS-001 — PRONOUNCED LOVE",
       format: "Digital PDF Workbook",
@@ -73,12 +74,12 @@ export const siteConfig = {
   },
 
   recentSignals: [
-    { label: "Transmission 03", sub: "", img: "/images/recent-1.png", date: "09.05.24" },
-    { label: "OBJECT 001", sub: "Field Shirt", img: "/images/recent-2.png", date: "08.05.24" },
-    { label: "Field Note", sub: "Kharkiv, Fragment", img: "/images/recent-3.png", date: "07.05.24" },
-    { label: "VISUAL STUDY 018", sub: "Video Still", img: "/images/recent-4.png", date: "05.05.24" },
-    { label: "VISUAL STUDY 019", sub: "WW-Helmet", img: "/images/fieldnotes.png", date: "05.05.24" },
-    { label: "Transmission 02", sub: "", img: "/images/garments.png", date: "02.05.24" },
+    { label: "MS-001 — PRONOUNCED LOVE", sub: "Digital PDF Workbook / Available Now", img: "/images/fieldnotes.png", date: "RELEASE", href: "/releases/ms-001-pronounced-love" },
+    { label: "Transmission 03", sub: "", img: "/images/recent-1.png", date: "09.05.24", href: "#releases" },
+    { label: "OBJECT 001", sub: "Field Shirt", img: "/images/recent-2.png", date: "08.05.24", href: "#objects" },
+    { label: "Field Note", sub: "Kharkiv, Fragment", img: "/images/recent-3.png", date: "07.05.24", href: "#archive" },
+    { label: "VISUAL STUDY 018", sub: "Video Still", img: "/images/recent-4.png", date: "05.05.24", href: "#archive" },
+    { label: "VISUAL STUDY 019", sub: "WW-Helmet", img: "/images/fieldnotes.png", date: "05.05.24", href: "#archive" },
   ],
 
   contentNotes: [
