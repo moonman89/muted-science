@@ -80,14 +80,14 @@ svg {
 
 .ms-content-grid {
   display: grid;
-  grid-template-columns: minmax(230px, 32%) minmax(0, 68%);
+  grid-template-columns: minmax(240px, 28%) minmax(0, 50%) minmax(220px, 22%);
   min-height: 420px;
 }
 
 .ms-content-grid__coordinates {
-  grid-column: 1 / -1;
-  min-height: 210px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  grid-column: auto;
+  min-height: 0;
+  border-top: 0;
 }
 
 .ms-recent-signals-grid {
@@ -118,12 +118,6 @@ svg {
   filter: grayscale(1) contrast(1.1);
 }
 
-@media (min-width: 1181px) {
-  .ms-content-grid {
-    grid-template-columns: minmax(260px, 28%) minmax(0, 72%);
-  }
-}
-
 @media (max-width: 1180px) {
   .ms-topbar {
     display: flex;
@@ -142,6 +136,17 @@ svg {
     min-height: 30px;
     font-size: 8px;
     letter-spacing: 0.08em;
+  }
+
+  .ms-content-grid {
+    grid-template-columns: minmax(220px, 34%) minmax(0, 66%);
+    min-height: 420px;
+  }
+
+  .ms-content-grid__coordinates {
+    grid-column: 1 / -1;
+    min-height: 190px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .ms-recent-signals-grid {
@@ -223,7 +228,9 @@ svg {
   }
 
   .ms-content-grid__coordinates {
+    grid-column: auto;
     min-height: 220px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .ms-recent-signals-grid {
