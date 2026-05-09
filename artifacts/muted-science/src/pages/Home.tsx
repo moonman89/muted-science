@@ -9,8 +9,8 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main id="current" className="min-h-[100dvh] bg-black text-white w-full overflow-x-hidden selection:bg-white selection:text-black">
-      <div className="max-w-screen-3xl mx-auto border-x border-white/20">
+    <main id="current" className="ms-page min-h-[100dvh] bg-black text-white selection:bg-white selection:text-black">
+      <div className="ms-shell border-x border-white/20">
         <TopBar />
         <Navigation />
         <Hero />
