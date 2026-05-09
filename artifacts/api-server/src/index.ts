@@ -34,7 +34,9 @@ if (!rawPort) throw new Error("PORT environment variable is required but was not
 const port = Number(rawPort);
 if (Number.isNaN(port) || port <= 0) throw new Error(`Invalid PORT value: "${rawPort}"`);
 
-await initStripe();
+initStripe().catch((err) => {
+  logger.error({ err }, 'Stripe initialization failed — checkout will be unavailable until STRIPE_SECRET_KEY is configured');
+});
 
 app.listen(port, (err) => {
   if (err) {
