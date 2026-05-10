@@ -32,9 +32,9 @@ export const siteConfig = {
 
   labels: {
     featuredProject: "Featured Release",
-    latestNotes: "Latest Notes",
+    latestNotes: "Current Story",
     recentSignals: "Recent Signals",
-    viewAllNotes: "View All Notes",
+    viewAllNotes: "Open Project",
     viewAllSignals: "View All Releases",
     viewProject: "View Release",
     viewFullIndex: "View Full Index",
@@ -83,11 +83,11 @@ export const siteConfig = {
   ],
 
   contentNotes: [
-    { date: "12.05.24", title: "Field Note: Kyiv Studio Visit by MS" },
-    { date: "11.05.24", title: "Object 019: Found Synthesizer in Lviv by WA" },
-    { date: "10.05.24", title: "Object 002: Field Jacket Update by MS" },
-    { date: "09.05.24", title: "Interview: Photographer A. Fragment by MS" },
-    { date: "08.05.24", title: "Signal interference in underground spaces" },
+    {
+      date: "MS-001",
+      title: "Pronounced Love — 62-day digital PDF workbook",
+      href: "/releases/ms-001-pronounced-love",
+    },
   ],
 
   footer: {
