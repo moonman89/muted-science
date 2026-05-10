@@ -39,3 +39,5 @@ packages = ["psmisc"]
 [userenv]
 
 [userenv.shared]
+STRIPE_SK = "sk_test_51TUyw1A1DpVtTo0sqzzEP3Q6RxcbaQMxA8iUZbPL1jasfpOZ0lLxEynzUYVFKUrF1gYmmTbhFRabvejPf5sBNGxm00ncQalsnm"
+STRIPE_PK = "pk_test_51TUyw1A1DpVtTo0sljpEToMKIafotyhImPY2GFmZDDZ4XV12fgMOmiPc9VbUw2eKW5gLkqE4KTDLNZjKl95OdyiT00KUOhDCMh"
