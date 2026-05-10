@@ -17,7 +17,14 @@ export default function Footer() {
     d.toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "2-digit" }).replace(/\//g, ".");
 
   return (
-    <footer className="w-full bg-black text-[9px] uppercase tracking-widest">
+    <footer className="w-full bg-black pt-6 text-[9px] uppercase tracking-widest">
+      <div className="border-y border-white/20 bg-black">
+        <div className="flex min-h-[30px] items-center justify-between gap-3 px-3 text-white/35">
+          <span>System / Footer</span>
+          <span>{siteConfig.name}</span>
+        </div>
+      </div>
+
       <div className="ms-footer-grid w-full border-b border-white/20">
         <div className="flex flex-col p-2.5 gap-1.5 border-r border-white/20 min-h-[132px]">
           <p className="text-white font-bold text-[10px] leading-none">{siteConfig.name}</p>
