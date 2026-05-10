@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -7,7 +8,7 @@ const entries = [
   ["MS-003", "Private Armor", "Object / Garment Study", "In Development"],
 ];
 
-const nodes = [
+const baseNodes = [
   { id: "MS-001", x: 50, y: 48, size: 7, label: "MS-001" },
   { id: "TRUTH", x: 25, y: 24, size: 4, label: "TRUTH" },
   { id: "REGULATION", x: 73, y: 20, size: 4, label: "REGULATION" },
@@ -18,7 +19,7 @@ const nodes = [
   { id: "ARCHIVE", x: 50, y: 14, size: 3, label: "ARCHIVE" },
 ];
 
-const links = [
+const graphLinks = [
   ["MS-001", "TRUTH"],
   ["MS-001", "REGULATION"],
   ["MS-001", "OBJECT"],
@@ -29,13 +30,102 @@ const links = [
   ["SIGNAL", "MS-002"],
   ["OBJECT", "MS-003"],
   ["MS-003", "MS-001"],
-];
+] as const;
 
-function nodeById(id: string) {
+type GraphNode = (typeof baseNodes)[number] & { vx: number; vy: number };
+
+function getNode(nodes: GraphNode[], id: string) {
   return nodes.find((node) => node.id === id)!;
 }
 
+function prefersReducedMotion() {
+  if (typeof window === "undefined") return true;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function useAnimatedGraph() {
+  const initialNodes = useMemo<GraphNode[]>(
+    () => baseNodes.map((node, index) => ({ ...node, vx: (index % 2 ? 0.01 : -0.01), vy: (index % 3 ? -0.008 : 0.008) })),
+    []
+  );
+  const [nodes, setNodes] = useState(initialNodes);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    let frame = 0;
+    let raf = 0;
+
+    const tick = () => {
+      frame += 1;
+      setNodes((current) => {
+        const next = current.map((node) => ({ ...node }));
+
+        for (const [from, to] of graphLinks) {
+          const a = getNode(next, from);
+          const b = getNode(next, to);
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const distance = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+          const target = from === "MS-001" || to === "MS-001" ? 30 : 24;
+          const force = (distance - target) * 0.00055;
+          const fx = dx * force;
+          const fy = dy * force;
+          a.vx += fx;
+          a.vy += fy;
+          b.vx -= fx;
+          b.vy -= fy;
+        }
+
+        for (let i = 0; i < next.length; i += 1) {
+          for (let j = i + 1; j < next.length; j += 1) {
+            const a = next[i];
+            const b = next[j];
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const distance = Math.max(4, Math.sqrt(dx * dx + dy * dy));
+            const force = 0.04 / (distance * distance);
+            const fx = dx * force;
+            const fy = dy * force;
+            a.vx -= fx;
+            a.vy -= fy;
+            b.vx += fx;
+            b.vy += fy;
+          }
+        }
+
+        return next.map((node, index) => {
+          const anchor = baseNodes[index];
+          const driftX = Math.sin(frame / 150 + index) * 0.003;
+          const driftY = Math.cos(frame / 170 + index * 1.7) * 0.003;
+          const pullX = (anchor.x - node.x) * 0.0009;
+          const pullY = (anchor.y - node.y) * 0.0009;
+          const vx = (node.vx + pullX + driftX) * 0.92;
+          const vy = (node.vy + pullY + driftY) * 0.92;
+
+          return {
+            ...node,
+            vx,
+            vy,
+            x: Math.min(88, Math.max(12, node.x + vx)),
+            y: Math.min(86, Math.max(12, node.y + vy)),
+          };
+        });
+      });
+
+      raf = window.requestAnimationFrame(tick);
+    };
+
+    raf = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(raf);
+  }, [initialNodes]);
+
+  return nodes;
+}
+
 export default function Archive() {
+  const nodes = useAnimatedGraph();
+
   return (
     <main className="ms-page min-h-[100dvh] bg-black text-white selection:bg-white selection:text-black">
       <div className="ms-shell border-x border-white/20">
@@ -65,9 +155,9 @@ export default function Archive() {
               }}
             />
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              {links.map(([from, to]) => {
-                const a = nodeById(from);
-                const b = nodeById(to);
+              {graphLinks.map(([from, to]) => {
+                const a = getNode(nodes, from);
+                const b = getNode(nodes, to);
                 return (
                   <line
                     key={`${from}-${to}`}
@@ -75,7 +165,7 @@ export default function Archive() {
                     y1={a.y}
                     x2={b.x}
                     y2={b.y}
-                    stroke="rgba(255,255,255,.24)"
+                    stroke="rgba(255,255,255,.25)"
                     strokeWidth="0.18"
                   />
                 );
@@ -87,11 +177,11 @@ export default function Archive() {
                 <Link
                   key={node.id}
                   href={node.id === "MS-001" ? "/releases/ms-001-pronounced-love" : "/archive"}
-                  className="group absolute -translate-x-1/2 -translate-y-1/2 text-[8px] uppercase tracking-widest text-white/45 hover:text-white"
+                  className="group absolute -translate-x-1/2 -translate-y-1/2 text-[8px] uppercase tracking-widest text-white/45 transition-colors duration-200 hover:z-10 hover:text-white"
                   style={{ left: `${node.x}%`, top: `${node.y}%` }}
                 >
                   <span
-                    className="mx-auto mb-2 block rounded-full border border-white/45 bg-black group-hover:bg-white"
+                    className="mx-auto mb-2 block rounded-full border border-white/45 bg-black shadow-[0_0_18px_rgba(255,255,255,.08)] transition-all duration-200 group-hover:scale-150 group-hover:bg-white group-hover:shadow-[0_0_24px_rgba(255,255,255,.3)]"
                     style={{ width: `${node.size * 2}px`, height: `${node.size * 2}px` }}
                   />
                   <span className="block whitespace-nowrap text-center group-hover:underline underline-offset-4">{node.label}</span>
