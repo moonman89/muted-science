@@ -7,6 +7,34 @@ const entries = [
   ["MS-003", "Private Armor", "Object / Garment Study", "In Development"],
 ];
 
+const nodes = [
+  { id: "MS-001", x: 50, y: 48, size: 7, label: "MS-001" },
+  { id: "TRUTH", x: 25, y: 24, size: 4, label: "TRUTH" },
+  { id: "REGULATION", x: 73, y: 20, size: 4, label: "REGULATION" },
+  { id: "OBJECT", x: 80, y: 60, size: 4, label: "OBJECT" },
+  { id: "SIGNAL", x: 33, y: 72, size: 4, label: "SIGNAL" },
+  { id: "MS-002", x: 18, y: 54, size: 3, label: "MS-002" },
+  { id: "MS-003", x: 68, y: 78, size: 3, label: "MS-003" },
+  { id: "ARCHIVE", x: 50, y: 14, size: 3, label: "ARCHIVE" },
+];
+
+const links = [
+  ["MS-001", "TRUTH"],
+  ["MS-001", "REGULATION"],
+  ["MS-001", "OBJECT"],
+  ["MS-001", "SIGNAL"],
+  ["MS-001", "ARCHIVE"],
+  ["TRUTH", "SIGNAL"],
+  ["REGULATION", "OBJECT"],
+  ["SIGNAL", "MS-002"],
+  ["OBJECT", "MS-003"],
+  ["MS-003", "MS-001"],
+];
+
+function nodeById(id: string) {
+  return nodes.find((node) => node.id === id)!;
+}
+
 export default function Archive() {
   return (
     <main className="ms-page min-h-[100dvh] bg-black text-white selection:bg-white selection:text-black">
@@ -14,23 +42,72 @@ export default function Archive() {
         <header className="border-b border-white/20">
           <div className="flex min-h-[34px] items-center justify-between gap-4 px-3 text-[10px] uppercase tracking-widest">
             <Link href="/" className="font-bold hover:underline underline-offset-4">{siteConfig.name}</Link>
-            <span className="text-white/45">Archive</span>
+            <span className="text-white/45">Archive / Graph</span>
           </div>
         </header>
 
-        <section className="grid border-b border-white/20 md:grid-cols-[0.38fr_0.62fr]">
+        <section className="grid border-b border-white/20 md:grid-cols-[0.34fr_0.66fr]">
           <div className="border-b border-white/20 p-4 md:border-b-0 md:border-r md:p-6">
-            <p className="mb-4 text-[10px] uppercase tracking-widest text-white/35">Cold Index / Release History</p>
+            <p className="mb-4 text-[10px] uppercase tracking-widest text-white/35">Cold Index / Graph View</p>
             <h1 className="font-display text-[clamp(42px,6vw,86px)] uppercase leading-[0.88] tracking-[0.04em]">Archive</h1>
-          </div>
-          <div className="p-4 md:p-6">
-            <p className="max-w-3xl text-sm leading-7 text-white/65 md:text-base">
-              A direct index of numbered releases, studies, media, and status inside the Muted Science system.
+            <p className="mt-5 max-w-sm text-[10px] uppercase leading-5 tracking-widest text-white/45">
+              A mapped index of releases, signals, objects, and internal conditions inside the Muted Science system.
             </p>
+          </div>
+
+          <div className="relative min-h-[420px] overflow-hidden border-white/20 bg-black">
+            <div
+              className="absolute inset-0 opacity-25"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              {links.map(([from, to]) => {
+                const a = nodeById(from);
+                const b = nodeById(to);
+                return (
+                  <line
+                    key={`${from}-${to}`}
+                    x1={a.x}
+                    y1={a.y}
+                    x2={b.x}
+                    y2={b.y}
+                    stroke="rgba(255,255,255,.24)"
+                    strokeWidth="0.18"
+                  />
+                );
+              })}
+            </svg>
+
+            <div className="absolute inset-0">
+              {nodes.map((node) => (
+                <Link
+                  key={node.id}
+                  href={node.id === "MS-001" ? "/releases/ms-001-pronounced-love" : "/archive"}
+                  className="group absolute -translate-x-1/2 -translate-y-1/2 text-[8px] uppercase tracking-widest text-white/45 hover:text-white"
+                  style={{ left: `${node.x}%`, top: `${node.y}%` }}
+                >
+                  <span
+                    className="mx-auto mb-2 block rounded-full border border-white/45 bg-black group-hover:bg-white"
+                    style={{ width: `${node.size * 2}px`, height: `${node.size * 2}px` }}
+                  />
+                  <span className="block whitespace-nowrap text-center group-hover:underline underline-offset-4">{node.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="border-b border-white/20 text-[10px] uppercase tracking-widest">
+          <div className="grid border-b border-white/20 text-white/35 md:grid-cols-[0.18fr_0.34fr_0.3fr_0.18fr]">
+            <div className="border-r border-white/20 p-3">Code</div>
+            <div className="border-r border-white/20 p-3">Title</div>
+            <div className="border-r border-white/20 p-3">Medium</div>
+            <div className="p-3">Status</div>
+          </div>
           {entries.map(([code, title, medium, status]) => (
             <Link key={code} href={code === "MS-001" ? "/releases/ms-001-pronounced-love" : "/archive"} className="grid border-b border-white/20 last:border-b-0 hover:bg-white hover:text-black md:grid-cols-[0.18fr_0.34fr_0.3fr_0.18fr]">
               <div className="border-b border-white/20 p-3 font-mono md:border-b-0 md:border-r">{code}</div>
