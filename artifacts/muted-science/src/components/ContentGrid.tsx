@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { siteConfig } from "@/lib/siteConfig";
 
 const HDR = 26;
-const NOTE = 60;
+const NOTE = 120;
 
 export default function ContentGrid() {
   const featuredRelease = siteConfig.releaseProducts.ms001;
@@ -26,18 +26,19 @@ export default function ContentGrid() {
         {siteConfig.contentNotes.map((note, i) => (
           <Link
             key={i}
-            href="#archive"
-            className="ms-card-link flex-shrink-0 flex flex-col justify-center px-2 border-b border-white/10 group hover:bg-white/5 hover:text-white transition-colors overflow-hidden"
+            href={note.href || featuredRelease.href}
+            className="ms-card-link flex-shrink-0 flex flex-col justify-center px-2 border-b border-white/10 group hover:bg-white hover:text-black transition-colors overflow-hidden"
             style={{ height: NOTE }}
             data-testid={`note-item-${i}`}
           >
-            <span className="text-[9px] text-white/40 font-mono leading-none mb-1">{note.date}</span>
-            <span className="text-[10px] leading-tight group-hover:underline underline-offset-2 ms-clamp-2">{note.title}</span>
+            <span className="text-[9px] text-white/40 font-mono leading-none mb-2 group-hover:text-black/50">{note.date}</span>
+            <span className="text-[15px] leading-tight group-hover:underline underline-offset-2 ms-clamp-2">{note.title}</span>
+            <span className="mt-3 text-[9px] uppercase tracking-widest text-white/45 group-hover:text-black/60">Open Project &rarr;</span>
           </Link>
         ))}
 
         <Link
-          href="#archive"
+          href={featuredRelease.href}
           className="ms-cta-row flex-shrink-0 flex items-center px-2 border-t border-white/20 text-[9px] uppercase tracking-widest hover:bg-white hover:text-black transition-colors mt-auto"
           style={{ height: HDR }}
           data-testid="link-view-all-notes"
