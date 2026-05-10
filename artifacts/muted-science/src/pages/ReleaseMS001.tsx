@@ -1,5 +1,7 @@
 import { Link } from "wouter";
 import { siteConfig } from "@/lib/siteConfig";
+import TopBar from "@/components/TopBar";
+import Navigation from "@/components/Navigation";
 
 const product = siteConfig.releaseProducts.ms001;
 
@@ -76,31 +78,8 @@ export default function ReleaseMS001() {
     <main className="ms-page min-h-[100dvh] bg-black text-white selection:bg-white selection:text-black">
       <div className="ms-shell border-x border-white/20">
         <PurchasedBanner />
-        <header className="border-b border-white/20">
-          <div className="flex min-h-[32px] items-center justify-between gap-4 px-3 text-[10px] uppercase tracking-widest">
-            <Link href="/" className="font-bold hover:underline underline-offset-4">
-              {siteConfig.name}
-            </Link>
-            <span className="text-white/45">{product.code} / Digital Study / PDF Edition</span>
-          </div>
-          <nav className="grid grid-cols-2 border-t border-white/20 text-[9px] uppercase tracking-widest md:grid-cols-5">
-            <Link href="/releases" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
-              Releases
-            </Link>
-            <Link href="/signals" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
-              Signals
-            </Link>
-            <Link href="/objects" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
-              Objects
-            </Link>
-            <Link href="/archive" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
-              Archive
-            </Link>
-            <Link href="/system" className="px-3 py-3 hover:bg-white hover:text-black">
-              System
-            </Link>
-          </nav>
-        </header>
+        <TopBar />
+        <Navigation />
 
         <section className="grid border-b border-white/20 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="relative min-h-[440px] overflow-hidden border-b border-white/20 lg:border-b-0 lg:border-r">
