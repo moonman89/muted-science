@@ -1,6 +1,35 @@
 import Stripe from 'stripe';
 
+// Replit integration: conn_stripe_01KR5DX17Z0M0Z5GXXQ7XYR1TZ
 async function getCredentials(): Promise<{ publishableKey: string; secretKey: string }> {
+  const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
+  const xReplitToken = process.env.REPL_IDENTITY
+    ? 'repl ' + process.env.REPL_IDENTITY
+    : process.env.WEB_REPL_RENEWAL
+    ? 'depl ' + process.env.WEB_REPL_RENEWAL
+    : null;
+
+  if (hostname && xReplitToken) {
+    const connectionSettings = await fetch(
+      'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=stripe',
+      {
+        headers: {
+          Accept: 'application/json',
+          'X-Replit-Token': xReplitToken,
+        },
+      }
+    )
+      .then(res => res.json())
+      .then((data: any) => data.items?.[0]);
+
+    if (connectionSettings?.settings?.secret_key && connectionSettings?.settings?.publishable_key) {
+      return {
+        secretKey: connectionSettings.settings.secret_key,
+        publishableKey: connectionSettings.settings.publishable_key,
+      };
+    }
+  }
+
   const secretKey = process.env.STRIPE_SECRET_KEY;
   const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
 
@@ -9,7 +38,7 @@ async function getCredentials(): Promise<{ publishableKey: string; secretKey: st
   }
 
   throw new Error(
-    'Stripe credentials not found. Set STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY as secrets.'
+    'Stripe credentials not found. Connect Stripe via the Replit integrations panel or set STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY as secrets.'
   );
 }
 
