@@ -4,10 +4,10 @@ import { siteConfig } from "@/lib/siteConfig";
 import EmailSignup from "@/components/EmailSignup";
 
 const principles = [
-  ["01", "Private Study", "Each release begins with an internal condition: repetition, restraint, attachment, guilt, protection, impulse, or memory."],
-  ["02", "Translation", "The study is translated through writing, image, material, construction, garment language, object language, and archive."],
-  ["03", "Numbered Output", "A workbook, garment, film, printed object, image campaign, limited edition, or one-of-one piece enters the system as a release."],
-  ["04", "No Merchandise", "Muted Science does not treat output as merch. Each work is designed, documented, and archived as part of a larger body of study."],
+  ["01", "Internal Condition", "Each release begins with an internal condition: repetition, restraint, attachment, guilt, protection, impulse, or memory."],
+  ["02", "Translation", "The condition is translated through writing, image, material, construction, garment language, object language, and archive."],
+  ["03", "Numbered Release", "A workbook, garment, film, printed object, image study, limited edition, or one-of-one piece enters the system as a numbered release."],
+  ["04", "No Merchandise", "MutedScience does not treat output as merchandise. Each work is designed, documented, and archived as part of a larger body of study."],
 ];
 
 const releaseMap = [
