@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { siteConfig } from "@/lib/siteConfig";
 
 const product = siteConfig.releaseProducts.ms001;
-const PRICE_ID = "price_1TV5ztA1DpVtTo0sGCkx5WNW";
+const PRICE_ID = "price_1TVVdHKz1uVoKtH9V4mEyHIV";
 
 type Stage = "form" | "loading" | "error";
 
