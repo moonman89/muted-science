@@ -1,12 +1,49 @@
 import { Resend } from 'resend';
 import { logger } from './logger';
 
-function getResendClient(): Resend {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    throw new Error('RESEND_API_KEY is not set. Email delivery is unavailable.');
+let connectionSettings: any;
+
+async function getCredentials(): Promise<{ apiKey: string; fromEmail: string }> {
+  const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
+  const xReplitToken = process.env.REPL_IDENTITY
+    ? 'repl ' + process.env.REPL_IDENTITY
+    : process.env.WEB_REPL_RENEWAL
+    ? 'depl ' + process.env.WEB_REPL_RENEWAL
+    : null;
+
+  if (!xReplitToken || !hostname) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('Resend not connected: no credentials available');
+    }
+    return { apiKey, fromEmail: 'noreply@mutedscience.com' };
   }
-  return new Resend(apiKey);
+
+  connectionSettings = await fetch(
+    'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend',
+    {
+      headers: {
+        Accept: 'application/json',
+        'X-Replit-Token': xReplitToken,
+      },
+    }
+  )
+    .then(res => res.json())
+    .then((data: any) => data.items?.[0]);
+
+  if (!connectionSettings?.settings?.api_key) {
+    throw new Error('Resend not connected');
+  }
+
+  return {
+    apiKey: connectionSettings.settings.api_key,
+    fromEmail: connectionSettings.settings.from_email || 'noreply@mutedscience.com',
+  };
+}
+
+async function getUncachableResendClient(): Promise<{ client: Resend; fromEmail: string }> {
+  const { apiKey, fromEmail } = await getCredentials();
+  return { client: new Resend(apiKey), fromEmail };
 }
 
 export async function sendPurchaseEmail({
@@ -20,8 +57,7 @@ export async function sendPurchaseEmail({
   downloadUrl: string;
   productName: string;
 }): Promise<void> {
-  const resend = getResendClient();
-  const displayName = toName || toEmail;
+  const { client: resend } = await getUncachableResendClient();
 
   const { error } = await resend.emails.send({
     from: 'Muted Science <noreply@mutedscience.com>',
