@@ -32,22 +32,13 @@ export default function Hero() {
               <span key={i} className={`block ${opacities[i] ?? "text-white"}`}>{line}</span>
             ))}
           </h1>
-          <div className="flex flex-wrap items-center gap-2">
-            <Link
-              href={release.checkoutUrl}
-              className="ms-cta-row inline-flex min-h-[30px] items-center border border-white/30 px-3 text-[10px] uppercase tracking-widest text-white hover:bg-white hover:text-black"
-              data-testid="link-acquire-hero"
-            >
-              {release.acquireLabel} — {release.price} &rarr;
-            </Link>
-            <Link
-              href={release.href}
-              className="inline-flex min-h-[30px] items-center px-1 text-[10px] uppercase tracking-widest text-white/70 hover:text-white hover:underline underline-offset-4"
-              data-testid="link-open-release-hero"
-            >
-              Read the system
-            </Link>
-          </div>
+          <Link
+            href={release.href}
+            className="inline-flex min-h-[30px] items-center px-1 text-[10px] uppercase tracking-widest text-white/70 hover:text-white hover:underline underline-offset-4"
+            data-testid="link-open-release-hero"
+          >
+            Read the system
+          </Link>
         </motion.div>
       </div>
     </section>
