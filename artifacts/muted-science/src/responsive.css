@@ -44,7 +44,7 @@ svg {
 
 .ms-nav {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   min-height: 30px;
 }
 
@@ -128,7 +128,7 @@ svg {
   }
 
   .ms-nav {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     height: auto !important;
   }
 
@@ -186,16 +186,16 @@ svg {
   }
 
   .ms-nav {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .ms-nav a {
     justify-content: center;
-    min-height: 32px;
-    padding-left: 4px;
-    padding-right: 4px;
-    font-size: 8px;
-    letter-spacing: 0.1em;
+    min-height: 34px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 7px;
+    letter-spacing: 0.06em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
@@ -260,13 +260,13 @@ svg {
   }
 
   .ms-nav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .ms-nav a {
-    min-height: 31px;
-    font-size: 7px;
-    letter-spacing: 0.08em;
+    min-height: 34px;
+    font-size: 6.5px;
+    letter-spacing: 0.045em;
   }
 
   .ms-recent-signals-grid {
@@ -276,7 +276,7 @@ svg {
 
 @media (max-width: 360px) {
   .ms-nav a {
-    font-size: 6.5px;
-    letter-spacing: 0.06em;
+    font-size: 6px;
+    letter-spacing: 0.03em;
   }
 }
