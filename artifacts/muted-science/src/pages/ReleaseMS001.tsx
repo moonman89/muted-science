@@ -81,20 +81,23 @@ export default function ReleaseMS001() {
             <Link href="/" className="font-bold hover:underline underline-offset-4">
               {siteConfig.name}
             </Link>
-            <span className="text-white/45">Release / {product.code}</span>
+            <span className="text-white/45">{product.code} / Digital Study / PDF Edition</span>
           </div>
-          <nav className="grid grid-cols-2 border-t border-white/20 text-[9px] uppercase tracking-widest md:grid-cols-4">
-            <Link href="/" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
-              Index
-            </Link>
-            <Link href="/#releases" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
+          <nav className="grid grid-cols-2 border-t border-white/20 text-[9px] uppercase tracking-widest md:grid-cols-5">
+            <Link href="/releases" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
               Releases
             </Link>
-            <Link href="/#archive" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
+            <Link href="/signals" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
+              Signals
+            </Link>
+            <Link href="/objects" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
+              Objects
+            </Link>
+            <Link href="/archive" className="border-r border-white/20 px-3 py-3 hover:bg-white hover:text-black">
               Archive
             </Link>
-            <Link href={product.checkoutUrl} className="px-3 py-3 hover:bg-white hover:text-black">
-              {product.acquireLabel}
+            <Link href="/system" className="px-3 py-3 hover:bg-white hover:text-black">
+              System
             </Link>
           </nav>
         </header>
@@ -109,7 +112,7 @@ export default function ReleaseMS001() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
               <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.26em] text-white/55">
-                Private Workbook / Digital Release
+                Digital Study / PDF Edition
               </p>
               <h1 className="max-w-4xl font-display text-[17vw] uppercase leading-[0.82] tracking-[0.04em] md:text-[10vw] lg:text-[7vw]">
                 MS-001<br />Pronounced Love
@@ -119,7 +122,7 @@ export default function ReleaseMS001() {
 
           <div className="flex min-h-[440px] flex-col">
             <div className="border-b border-white/20 p-4 md:p-6">
-              <p className="mb-3 text-[10px] uppercase tracking-widest text-white/40">Digital PDF Workbook</p>
+              <p className="mb-3 text-[10px] uppercase tracking-widest text-white/40">Digital Study / PDF Edition</p>
               <h2 className="mb-6 font-mono text-xl uppercase leading-tight tracking-[0.12em] md:text-2xl">
                 {product.displayTitle}
               </h2>
@@ -194,7 +197,7 @@ export default function ReleaseMS001() {
 
         <footer className="flex flex-col justify-between gap-2 px-3 py-3 text-[9px] uppercase tracking-widest text-white/35 md:flex-row">
           <p>{siteConfig.name} / {product.displayTitle}</p>
-          <Link href="/" className="hover:text-white hover:underline underline-offset-4">Return to Index</Link>
+          <Link href="/" className="hover:text-white hover:underline underline-offset-4">Return to Release</Link>
         </footer>
       </div>
     </main>
