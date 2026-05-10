@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Muted Science",
-  tagline: "AN INDEPENDENT RESEARCH HOUSE FOR GARMENTS, OBJECTS, IMAGES, AND INTERNAL SYSTEMS.",
+  tagline: "AN INDEPENDENT RESEARCH SYSTEM FOR GARMENTS, OBJECTS, IMAGES, AND INTERNAL SYSTEMS.",
   currentTransmission: "01",
   currentLocation: "Online",
   contactEmail: "mutedscience@icloud.com",
@@ -8,11 +8,10 @@ export const siteConfig = {
   nav: {
     links: [
       { label: "RELEASES", href: "#current" },
+      { label: "SIGNALS", href: "#releases" },
       { label: "OBJECTS", href: "#archive" },
-      { label: "STUDIES", href: "#releases" },
       { label: "ARCHIVE", href: "/system" },
-      { label: "ABOUT", href: "/system" },
-      { label: "ACQUIRE", href: "/checkout/ms-001" },
+      { label: "SYSTEM", href: "/system" },
     ],
   },
 
@@ -32,7 +31,7 @@ export const siteConfig = {
   labels: {
     featuredProject: "Featured Release",
     latestNotes: "Current Release",
-    recentSignals: "Release Studies",
+    recentSignals: "Signals",
     viewAllNotes: "View Study",
     viewAllSignals: "Open Release",
     viewProject: "View Release",
@@ -57,7 +56,7 @@ export const siteConfig = {
         "/images/recent-4.png",
       ],
       copy: [
-        "Muted Science is an independent research house translating internal patterns into numbered releases across printed matter, garment studies, object editions, and image work.",
+        "Muted Science is an independent research system translating internal patterns into numbered releases across printed matter, garment studies, object editions, and image work.",
         "MS-001 — Pronounced Love is the first release: a private system issued as a daily PDF workbook.",
         "A study on repetition, guilt, action, emotional regulation, and clean integration.",
         "62 days.",
@@ -90,13 +89,14 @@ export const siteConfig = {
   ],
 
   footer: {
-    description: "An independent research house creating garments, objects, images, and systems from private studies.",
+    description: "An independent research system creating garments, objects, images, and numbered releases from private studies.",
     copyright: "© Muted Science",
     system: [
       { label: "Releases", href: "#current" },
+      { label: "Signals", href: "#releases" },
       { label: "Objects", href: "#archive" },
-      { label: "Studies", href: "#releases" },
       { label: "Archive", href: "/system" },
+      { label: "System", href: "/system" },
       { label: "Contact", href: "mailto:mutedscience@icloud.com" },
     ],
     connect: [
