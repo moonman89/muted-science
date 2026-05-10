@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { siteConfig } from "@/lib/siteConfig";
+import EmailSignup from "@/components/EmailSignup";
 
 export default function Footer() {
   const [time, setTime] = useState(new Date());
@@ -44,30 +45,33 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col p-2.5 gap-1.5 min-h-[132px]">
-          <div>
-            <p className="text-white/35 mb-1 leading-none">Current Location</p>
-            <p className="text-white/80 leading-tight">{siteConfig.currentLocation}</p>
-          </div>
-          <div>
-            <p className="text-white/35 mb-1 leading-none">System Time</p>
-            <p className="font-mono text-white text-[11px] leading-none">{formatTime(time)}</p>
-            <p className="font-mono text-white/40 text-[8px] mt-1 leading-none">{formatDate(time)}</p>
-          </div>
-          <div className="mt-auto flex items-center gap-2 pt-2">
-            <div className="flex items-center gap-1 text-white/30 font-mono text-[10px] select-none">
-              <span>&#8212;</span>
-              <span className="border border-white/25 w-3 h-3 flex items-center justify-center text-[8px]">+</span>
-              <span>&#8212;</span>
+        <div className="flex flex-col gap-1.5 min-h-[132px]">
+          <div className="flex flex-col p-2.5 gap-1.5 border-b border-white/20">
+            <div>
+              <p className="text-white/35 mb-1 leading-none">Current Location</p>
+              <p className="text-white/80 leading-tight">{siteConfig.currentLocation}</p>
             </div>
-            <div
-              className="w-7 h-7 border border-white/20 flex-shrink-0 opacity-80"
-              style={{
-                background: "radial-gradient(circle, rgba(80,120,60,0.6) 0%, rgba(40,60,30,0.4) 60%, transparent 100%)",
-                boxShadow: "inset 0 0 8px rgba(80,140,50,0.3)",
-              }}
-            />
+            <div>
+              <p className="text-white/35 mb-1 leading-none">System Time</p>
+              <p className="font-mono text-white text-[11px] leading-none">{formatTime(time)}</p>
+              <p className="font-mono text-white/40 text-[8px] mt-1 leading-none">{formatDate(time)}</p>
+            </div>
+            <div className="mt-auto flex items-center gap-2 pt-2">
+              <div className="flex items-center gap-1 text-white/30 font-mono text-[10px] select-none">
+                <span>&#8212;</span>
+                <span className="border border-white/25 w-3 h-3 flex items-center justify-center text-[8px]">+</span>
+                <span>&#8212;</span>
+              </div>
+              <div
+                className="w-7 h-7 border border-white/20 flex-shrink-0 opacity-80"
+                style={{
+                  background: "radial-gradient(circle, rgba(80,120,60,0.6) 0%, rgba(40,60,30,0.4) 60%, transparent 100%)",
+                  boxShadow: "inset 0 0 8px rgba(80,140,50,0.3)",
+                }}
+              />
+            </div>
           </div>
+          <EmailSignup />
         </div>
       </div>
     </footer>

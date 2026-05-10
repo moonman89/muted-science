@@ -1,4 +1,7 @@
 import { Pool } from 'pg';
+import { db } from '@workspace/db';
+import { purchasesTable, emailSignupsTable, type InsertPurchase } from '@workspace/db/schema';
+import { eq } from 'drizzle-orm';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
@@ -29,5 +32,50 @@ export const storage = {
       [priceId]
     );
     return result.rows[0] ?? null;
+  },
+
+  async createPurchase(data: InsertPurchase) {
+    const [row] = await db.insert(purchasesTable).values(data).returning();
+    return row;
+  },
+
+  async getPurchaseBySessionId(stripeSessionId: string) {
+    const [row] = await db
+      .select()
+      .from(purchasesTable)
+      .where(eq(purchasesTable.stripeSessionId, stripeSessionId))
+      .limit(1);
+    return row ?? null;
+  },
+
+  async getPurchaseByToken(token: string) {
+    const [row] = await db
+      .select()
+      .from(purchasesTable)
+      .where(eq(purchasesTable.downloadToken, token))
+      .limit(1);
+    return row ?? null;
+  },
+
+  async incrementDownloadCount(token: string) {
+    const [row] = await db
+      .select({ downloadCount: purchasesTable.downloadCount })
+      .from(purchasesTable)
+      .where(eq(purchasesTable.downloadToken, token))
+      .limit(1);
+    if (!row) return;
+    await db
+      .update(purchasesTable)
+      .set({ downloadCount: row.downloadCount + 1 })
+      .where(eq(purchasesTable.downloadToken, token));
+  },
+
+  async createEmailSignup(email: string) {
+    const [row] = await db
+      .insert(emailSignupsTable)
+      .values({ email: email.toLowerCase().trim() })
+      .onConflictDoNothing()
+      .returning();
+    return row ?? null;
   },
 };

@@ -11,7 +11,7 @@ async function initStripe() {
 
   try {
     logger.info('Initializing Stripe schema...');
-    await runMigrations({ databaseUrl, schema: 'stripe' });
+    await (runMigrations as (opts: { databaseUrl: string; schema?: string }) => Promise<void>)({ databaseUrl, schema: 'stripe' });
     logger.info('Stripe schema ready');
 
     const stripeSync = await getStripeSync();
@@ -22,7 +22,7 @@ async function initStripe() {
 
     stripeSync.syncBackfill()
       .then(() => logger.info('Stripe data synced'))
-      .catch((err) => logger.error({ err }, 'Error syncing Stripe data'));
+      .catch((err: unknown) => logger.error({ err }, 'Error syncing Stripe data'));
   } catch (error) {
     logger.error({ err: error }, 'Failed to initialize Stripe');
     throw error;

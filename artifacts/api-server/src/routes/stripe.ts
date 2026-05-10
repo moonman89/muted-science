@@ -39,7 +39,8 @@ router.post('/stripe/checkout', async (req, res) => {
     const { priceId, email } = req.body as { priceId: string; email: string };
 
     if (!priceId || !email) {
-      return res.status(400).json({ error: 'priceId and email are required' });
+      res.status(400).json({ error: 'priceId and email are required' });
+      return;
     }
 
     const stripe = await getUncachableStripeClient();
@@ -55,6 +56,7 @@ router.post('/stripe/checkout', async (req, res) => {
       metadata: {
         send_pdf_email: 'true',
         buyer_email: email,
+        product_name: 'MS-001 — Pronounced Love',
       },
     });
 

@@ -16,7 +16,7 @@ async function getCredentials(): Promise<{ publishableKey: string; secretKey: st
 // WARNING: Never cache this client — tokens expire.
 export async function getUncachableStripeClient(): Promise<Stripe> {
   const { secretKey } = await getCredentials();
-  return new Stripe(secretKey, { apiVersion: '2025-08-27.basil' });
+  return new Stripe(secretKey, { apiVersion: '2026-04-22.dahlia' });
 }
 
 export async function getStripePublishableKey(): Promise<string> {
