@@ -7,10 +7,10 @@ export const siteConfig = {
 
   nav: {
     links: [
-      { label: "RELEASES", href: "#current" },
-      { label: "SIGNALS", href: "#releases" },
-      { label: "OBJECTS", href: "#archive" },
-      { label: "ARCHIVE", href: "/system" },
+      { label: "RELEASES", href: "/releases" },
+      { label: "SIGNALS", href: "/signals" },
+      { label: "OBJECTS", href: "/objects" },
+      { label: "ARCHIVE", href: "/archive" },
       { label: "SYSTEM", href: "/system" },
     ],
   },
@@ -92,10 +92,10 @@ export const siteConfig = {
     description: "An independent research system creating garments, objects, images, and numbered releases from private studies.",
     copyright: "© Muted Science",
     system: [
-      { label: "Releases", href: "#current" },
-      { label: "Signals", href: "#releases" },
-      { label: "Objects", href: "#archive" },
-      { label: "Archive", href: "/system" },
+      { label: "Releases", href: "/releases" },
+      { label: "Signals", href: "/signals" },
+      { label: "Objects", href: "/objects" },
+      { label: "Archive", href: "/archive" },
       { label: "System", href: "/system" },
       { label: "Contact", href: "mailto:mutedscience@icloud.com" },
     ],
