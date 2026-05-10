@@ -49,6 +49,16 @@ Enable GitHub Pages in the repository settings:
 - Set **Source** to **GitHub Actions**
 - No further configuration needed — every subsequent push to `main` triggers a deploy automatically
 
+### Failure notifications (optional)
+The `build-and-deploy` job posts a Slack message with a direct link to the failed run whenever the job fails.
+
+To enable it:
+1. Create an [Incoming Webhook](https://api.slack.com/messaging/webhooks) in your Slack workspace and copy the URL.
+2. Go to **Settings → Secrets and variables → Actions** in the GitHub repository.
+3. Add a secret named `SLACK_WEBHOOK_URL` with the webhook URL as the value.
+
+If the secret is not set, the notification step exits silently and the rest of the pipeline is unaffected. GitHub also sends its own email notifications to repository watchers on failure regardless of this setting.
+
 ## Gotchas
 
 _Populate as you build — sharp edges, "always run X before Y" rules._
