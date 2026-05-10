@@ -1,23 +1,24 @@
 export const siteConfig = {
   name: "Muted Science",
-  tagline: "A CREATIVE RESEARCH PLATFORM FOR OBJECTS, IMAGES, GARMENTS, AND INTERNAL SYSTEMS.",
+  tagline: "AN INDEPENDENT RESEARCH HOUSE FOR GARMENTS, OBJECTS, IMAGES, AND INTERNAL SYSTEMS.",
   currentTransmission: "01",
   currentLocation: "Online",
   contactEmail: "mutedscience@icloud.com",
 
   nav: {
     links: [
-      { label: "RELEASE", href: "#current" },
-      { label: "SYSTEM", href: "#archive" },
-      { label: "INSIDE", href: "#releases" },
-      { label: "DELIVERY", href: "/releases/ms-001-pronounced-love#delivery" },
+      { label: "RELEASES", href: "#current" },
+      { label: "OBJECTS", href: "#archive" },
+      { label: "STUDIES", href: "#releases" },
+      { label: "ARCHIVE", href: "/system" },
+      { label: "ABOUT", href: "/system" },
       { label: "ACQUIRE", href: "/checkout/ms-001" },
     ],
   },
 
   hero: {
     issueCode: "MS-001",
-    lines: ["PRONOUNCED", "LOVE", "WORKBOOK."],
+    lines: ["PRONOUNCED", "LOVE", "STUDY."],
     cta: "Acquire PDF",
   },
 
@@ -30,9 +31,9 @@ export const siteConfig = {
 
   labels: {
     featuredProject: "Featured Release",
-    latestNotes: "Current Story",
-    recentSignals: "Inside The System",
-    viewAllNotes: "Open Project",
+    latestNotes: "Current Release",
+    recentSignals: "Release Studies",
+    viewAllNotes: "View Study",
     viewAllSignals: "Open Release",
     viewProject: "View Release",
     viewFullIndex: "View Full Index",
@@ -45,7 +46,7 @@ export const siteConfig = {
       href: "/releases/ms-001-pronounced-love",
       title: "Pronounced Love",
       displayTitle: "MS-001 — PRONOUNCED LOVE",
-      format: "Digital PDF Workbook",
+      format: "Digital Study / PDF Edition",
       price: "$38",
       availability: "Digital PDF available now.",
       checkoutUrl: "/checkout/ms-001",
@@ -56,46 +57,46 @@ export const siteConfig = {
         "/images/recent-4.png",
       ],
       copy: [
-        "A private system released as a daily PDF workbook.",
-        "A study on truth, regulation, emotional awareness, repetition, guilt, action, and integration.",
+        "Muted Science is an independent research house translating internal patterns into numbered releases across printed matter, garment studies, object editions, and image work.",
+        "MS-001 — Pronounced Love is the first release: a private system issued as a daily PDF workbook.",
+        "A study on repetition, guilt, action, emotional regulation, and clean integration.",
         "62 days.",
         "Reflect. Write. Act. Integrate.",
-        "Digital PDF available now.",
       ],
       metadata: [
         { label: "Release", value: "MS-001" },
-        { label: "System", value: "Pronounced Love" },
+        { label: "Medium", value: "Digital Study / PDF Edition" },
         { label: "Duration", value: "62 days" },
-        { label: "Format", value: "Private PDF Workbook" },
+        { label: "Condition", value: "Repetition / Guilt / Integration" },
       ],
     },
   },
 
   recentSignals: [
-    { label: "TRUTH", sub: "Breaking point / pattern mapping", img: "/images/recent-1.png", date: "01", href: "/releases/ms-001-pronounced-love" },
-    { label: "REGULATION", sub: "Breath / body awareness / safety", img: "/images/recent-2.png", date: "02", href: "/releases/ms-001-pronounced-love" },
-    { label: "RESPONSIBILITY", sub: "Repair over punishment", img: "/images/recent-3.png", date: "03", href: "/releases/ms-001-pronounced-love" },
-    { label: "IDENTITY", sub: "Discipline / boundaries / honesty", img: "/images/recent-4.png", date: "04", href: "/releases/ms-001-pronounced-love" },
-    { label: "RELATIONSHIP", sub: "Trust / temptation / image", img: "/images/fieldnotes.png", date: "05", href: "/releases/ms-001-pronounced-love" },
+    { label: "MS-001 — PRONOUNCED LOVE", sub: "Digital Study / PDF Edition", img: "/images/recent-1.png", date: "LIVE", href: "/releases/ms-001-pronounced-love" },
+    { label: "MS-002 — THE FIRST SIGNAL", sub: "Garment Study / In Development", img: "/images/recent-2.png", date: "DEV", href: "#releases" },
+    { label: "MS-003 — PRIVATE ARMOR", sub: "Object / Garment Study", img: "/images/recent-3.png", date: "DEV", href: "#releases" },
+    { label: "TRUTH", sub: "Breaking point / pattern mapping", img: "/images/recent-4.png", date: "01", href: "/releases/ms-001-pronounced-love" },
+    { label: "REGULATION", sub: "Breath / body awareness / safety", img: "/images/fieldnotes.png", date: "02", href: "/releases/ms-001-pronounced-love" },
     { label: "RELEASE", sub: "Closure / forgiveness / clean movement", img: "/images/garments.png", date: "08", href: "/releases/ms-001-pronounced-love" },
   ],
 
   contentNotes: [
     {
       date: "MS-001",
-      title: "Pronounced Love — 62-day digital PDF workbook",
+      title: "Pronounced Love — Digital Study / PDF Edition",
       href: "/releases/ms-001-pronounced-love",
     },
   ],
 
   footer: {
-    description: "A release system for private work, emotional pattern recognition, and clean integration.",
+    description: "An independent research house creating garments, objects, images, and systems from private studies.",
     copyright: "© Muted Science",
     system: [
-      { label: "Release", href: "#current" },
-      { label: "System", href: "#archive" },
-      { label: "Inside", href: "#releases" },
-      { label: "Acquire", href: "/checkout/ms-001" },
+      { label: "Releases", href: "#current" },
+      { label: "Objects", href: "#archive" },
+      { label: "Studies", href: "#releases" },
+      { label: "Archive", href: "/system" },
       { label: "Contact", href: "mailto:mutedscience@icloud.com" },
     ],
     connect: [
