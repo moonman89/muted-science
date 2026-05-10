@@ -42,11 +42,6 @@ router.post('/stripe/checkout', async (req, res) => {
       return res.status(400).json({ error: 'priceId and email are required' });
     }
 
-    const price = await storage.getPrice(priceId);
-    if (!price) {
-      return res.status(404).json({ error: 'Price not found' });
-    }
-
     const stripe = await getUncachableStripeClient();
     const baseUrl = `https://${process.env.REPLIT_DOMAINS?.split(',')[0]}`;
 
