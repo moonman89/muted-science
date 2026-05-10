@@ -9,14 +9,14 @@ const entries = [
 ];
 
 const baseNodes = [
-  { id: "MS-001", x: 50, y: 48, size: 7, label: "MS-001" },
-  { id: "TRUTH", x: 25, y: 24, size: 4, label: "TRUTH" },
-  { id: "REGULATION", x: 73, y: 20, size: 4, label: "REGULATION" },
-  { id: "OBJECT", x: 80, y: 60, size: 4, label: "OBJECT" },
-  { id: "SIGNAL", x: 33, y: 72, size: 4, label: "SIGNAL" },
-  { id: "MS-002", x: 18, y: 54, size: 3, label: "MS-002" },
-  { id: "MS-003", x: 68, y: 78, size: 3, label: "MS-003" },
-  { id: "ARCHIVE", x: 50, y: 14, size: 3, label: "ARCHIVE" },
+  { id: "MS-001", x: 50, y: 48, size: 8, label: "MS-001" },
+  { id: "TRUTH", x: 28, y: 28, size: 4, label: "TRUTH" },
+  { id: "REGULATION", x: 72, y: 26, size: 4, label: "REGULATION" },
+  { id: "OBJECT", x: 77, y: 62, size: 4, label: "OBJECT" },
+  { id: "SIGNAL", x: 30, y: 66, size: 4, label: "SIGNAL" },
+  { id: "MS-002", x: 18, y: 46, size: 3, label: "MS-002" },
+  { id: "MS-003", x: 66, y: 78, size: 3, label: "MS-003" },
+  { id: "ARCHIVE", x: 50, y: 18, size: 3, label: "ARCHIVE" },
 ];
 
 const graphLinks = [
@@ -67,8 +67,8 @@ function useAnimatedGraph() {
           const dx = b.x - a.x;
           const dy = b.y - a.y;
           const distance = Math.max(1, Math.sqrt(dx * dx + dy * dy));
-          const target = from === "MS-001" || to === "MS-001" ? 30 : 24;
-          const force = (distance - target) * 0.00055;
+          const target = from === "MS-001" || to === "MS-001" ? 28 : 22;
+          const force = (distance - target) * 0.00045;
           const fx = dx * force;
           const fy = dy * force;
           a.vx += fx;
@@ -83,8 +83,8 @@ function useAnimatedGraph() {
             const b = next[j];
             const dx = b.x - a.x;
             const dy = b.y - a.y;
-            const distance = Math.max(4, Math.sqrt(dx * dx + dy * dy));
-            const force = 0.04 / (distance * distance);
+            const distance = Math.max(5, Math.sqrt(dx * dx + dy * dy));
+            const force = 0.03 / (distance * distance);
             const fx = dx * force;
             const fy = dy * force;
             a.vx -= fx;
@@ -96,19 +96,19 @@ function useAnimatedGraph() {
 
         return next.map((node, index) => {
           const anchor = baseNodes[index];
-          const driftX = Math.sin(frame / 150 + index) * 0.003;
-          const driftY = Math.cos(frame / 170 + index * 1.7) * 0.003;
-          const pullX = (anchor.x - node.x) * 0.0009;
-          const pullY = (anchor.y - node.y) * 0.0009;
-          const vx = (node.vx + pullX + driftX) * 0.92;
-          const vy = (node.vy + pullY + driftY) * 0.92;
+          const driftX = Math.sin(frame / 165 + index) * 0.0022;
+          const driftY = Math.cos(frame / 190 + index * 1.7) * 0.0022;
+          const pullX = (anchor.x - node.x) * 0.0011;
+          const pullY = (anchor.y - node.y) * 0.0011;
+          const vx = (node.vx + pullX + driftX) * 0.9;
+          const vy = (node.vy + pullY + driftY) * 0.9;
 
           return {
             ...node,
             vx,
             vy,
-            x: Math.min(88, Math.max(12, node.x + vx)),
-            y: Math.min(86, Math.max(12, node.y + vy)),
+            x: Math.min(84, Math.max(16, node.x + vx)),
+            y: Math.min(82, Math.max(16, node.y + vy)),
           };
         });
       });
@@ -136,24 +136,29 @@ export default function Archive() {
           </div>
         </header>
 
-        <section className="grid border-b border-white/20 md:grid-cols-[0.34fr_0.66fr]">
-          <div className="border-b border-white/20 p-4 md:border-b-0 md:border-r md:p-6">
-            <p className="mb-4 text-[10px] uppercase tracking-widest text-white/35">Cold Index / Graph View</p>
-            <h1 className="font-display text-[clamp(42px,6vw,86px)] uppercase leading-[0.88] tracking-[0.04em]">Archive</h1>
-            <p className="mt-5 max-w-sm text-[10px] uppercase leading-5 tracking-widest text-white/45">
-              A mapped index of releases, signals, objects, and internal conditions inside the Muted Science system.
-            </p>
+        <section className="border-b border-white/20">
+          <div className="grid border-b border-white/20 md:grid-cols-[0.34fr_0.66fr]">
+            <div className="border-b border-white/20 p-4 md:border-b-0 md:border-r md:p-6">
+              <p className="mb-4 text-[10px] uppercase tracking-widest text-white/35">Cold Index / Graph View</p>
+              <h1 className="font-display text-[clamp(42px,6vw,86px)] uppercase leading-[0.88] tracking-[0.04em]">Archive</h1>
+            </div>
+            <div className="p-4 md:p-6">
+              <p className="max-w-3xl text-[11px] uppercase leading-6 tracking-widest text-white/50 md:text-sm md:normal-case md:tracking-normal md:leading-7 md:text-white/65">
+                A mapped index of releases, signals, objects, and internal conditions inside the Muted Science system.
+              </p>
+            </div>
           </div>
 
-          <div className="relative min-h-[420px] overflow-hidden border-white/20 bg-black">
+          <div className="relative min-h-[360px] overflow-hidden border-b border-white/20 bg-black md:min-h-[520px]">
             <div
-              className="absolute inset-0 opacity-25"
+              className="absolute inset-0 opacity-20"
               style={{
                 backgroundImage:
                   "linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)",
                 backgroundSize: "24px 24px",
               }}
             />
+            <div className="absolute inset-4 border border-white/15 md:inset-6" />
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
               {graphLinks.map(([from, to]) => {
                 const a = getNode(nodes, from);
@@ -165,8 +170,8 @@ export default function Archive() {
                     y1={a.y}
                     x2={b.x}
                     y2={b.y}
-                    stroke="rgba(255,255,255,.25)"
-                    strokeWidth="0.18"
+                    stroke="rgba(255,255,255,.22)"
+                    strokeWidth="0.16"
                   />
                 );
               })}
@@ -177,7 +182,7 @@ export default function Archive() {
                 <Link
                   key={node.id}
                   href={node.id === "MS-001" ? "/releases/ms-001-pronounced-love" : "/archive"}
-                  className="group absolute -translate-x-1/2 -translate-y-1/2 text-[8px] uppercase tracking-widest text-white/45 transition-colors duration-200 hover:z-10 hover:text-white"
+                  className="group absolute -translate-x-1/2 -translate-y-1/2 text-[7px] uppercase tracking-widest text-white/48 transition-colors duration-200 hover:z-10 hover:text-white md:text-[8px]"
                   style={{ left: `${node.x}%`, top: `${node.y}%` }}
                 >
                   <span
@@ -192,17 +197,17 @@ export default function Archive() {
         </section>
 
         <section className="border-b border-white/20 text-[10px] uppercase tracking-widest">
-          <div className="grid border-b border-white/20 text-white/35 md:grid-cols-[0.18fr_0.34fr_0.3fr_0.18fr]">
+          <div className="hidden border-b border-white/20 text-white/35 md:grid md:grid-cols-[0.18fr_0.34fr_0.3fr_0.18fr]">
             <div className="border-r border-white/20 p-3">Code</div>
             <div className="border-r border-white/20 p-3">Title</div>
             <div className="border-r border-white/20 p-3">Medium</div>
             <div className="p-3">Status</div>
           </div>
           {entries.map(([code, title, medium, status]) => (
-            <Link key={code} href={code === "MS-001" ? "/releases/ms-001-pronounced-love" : "/archive"} className="grid border-b border-white/20 last:border-b-0 hover:bg-white hover:text-black md:grid-cols-[0.18fr_0.34fr_0.3fr_0.18fr]">
-              <div className="border-b border-white/20 p-3 font-mono md:border-b-0 md:border-r">{code}</div>
-              <div className="border-b border-white/20 p-3 md:border-b-0 md:border-r">{title}</div>
-              <div className="border-b border-white/20 p-3 text-white/55 md:border-b-0 md:border-r">{medium}</div>
+            <Link key={code} href={code === "MS-001" ? "/releases/ms-001-pronounced-love" : "/archive"} className="block border-b border-white/20 last:border-b-0 hover:bg-white hover:text-black md:grid md:grid-cols-[0.18fr_0.34fr_0.3fr_0.18fr]">
+              <div className="border-b border-white/10 p-3 font-mono text-white md:border-b-0 md:border-r">{code}</div>
+              <div className="border-b border-white/10 p-3 md:border-b-0 md:border-r">{title}</div>
+              <div className="border-b border-white/10 p-3 text-white/55 md:border-b-0 md:border-r">{medium}</div>
               <div className="p-3 text-white/45">{status}</div>
             </Link>
           ))}
