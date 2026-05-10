@@ -17,7 +17,7 @@ export const siteConfig = {
 
   hero: {
     issueCode: "MS-001",
-    lines: ["PRONOUNCED", "LOVE", "STUDY."],
+    lines: ["PRONOUNCED", "LOVE"],
     cta: "Acquire PDF",
   },
 
