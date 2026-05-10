@@ -44,7 +44,7 @@ svg {
 
 .ms-nav {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   min-height: 30px;
 }
 
@@ -128,7 +128,7 @@ svg {
   }
 
   .ms-nav {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     height: auto !important;
   }
 
@@ -260,7 +260,7 @@ svg {
   }
 
   .ms-nav {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .ms-nav a {
