@@ -7,35 +7,33 @@ export const siteConfig = {
 
   nav: {
     links: [
-      { label: "CURRENT", href: "#current" },
-      { label: "ARCHIVE", href: "#archive" },
-      { label: "RELEASES", href: "#releases" },
-      { label: "OBJECTS", href: "#objects" },
-      { label: "PROCESS", href: "#process" },
-      { label: "COLLABORATORS", href: "#collaborators" },
-      { label: "INDEX", href: "#index" },
+      { label: "RELEASE", href: "#current" },
+      { label: "SYSTEM", href: "#archive" },
+      { label: "INSIDE", href: "#releases" },
+      { label: "DELIVERY", href: "/releases/ms-001-pronounced-love#delivery" },
+      { label: "ACQUIRE", href: "/checkout/ms-001" },
     ],
   },
 
   hero: {
     issueCode: "MS-001",
     lines: ["PRONOUNCED", "LOVE", "WORKBOOK."],
-    cta: "Open MS-001 Project",
+    cta: "Acquire PDF",
   },
 
   categories: [
-    { name: "Garments", img: "/images/garments.png", href: "#objects" },
-    { name: "Objects", img: "/images/objects.png", href: "#objects" },
-    { name: "Process", img: "/images/fieldnotes.png", href: "#process" },
-    { name: "Collaborators", img: "/images/people.png", href: "#collaborators" },
+    { name: "Who This Is For", img: "/images/garments.png", href: "/releases/ms-001-pronounced-love" },
+    { name: "How It Works", img: "/images/objects.png", href: "/releases/ms-001-pronounced-love" },
+    { name: "What’s Inside", img: "/images/fieldnotes.png", href: "/releases/ms-001-pronounced-love" },
+    { name: "Delivery", img: "/images/people.png", href: "/releases/ms-001-pronounced-love#delivery" },
   ],
 
   labels: {
     featuredProject: "Featured Release",
     latestNotes: "Current Story",
-    recentSignals: "Recent Signals",
+    recentSignals: "Inside The System",
     viewAllNotes: "Open Project",
-    viewAllSignals: "View All Releases",
+    viewAllSignals: "Open Release",
     viewProject: "View Release",
     viewFullIndex: "View Full Index",
   },
@@ -74,12 +72,12 @@ export const siteConfig = {
   },
 
   recentSignals: [
-    { label: "MS-001 — PRONOUNCED LOVE", sub: "Digital PDF Workbook / Available Now", img: "/images/fieldnotes.png", date: "RELEASE", href: "/releases/ms-001-pronounced-love" },
-    { label: "Transmission 03", sub: "", img: "/images/recent-1.png", date: "09.05.24", href: "#releases" },
-    { label: "OBJECT 001", sub: "Field Shirt", img: "/images/recent-2.png", date: "08.05.24", href: "#objects" },
-    { label: "Field Note", sub: "Kharkiv, Fragment", img: "/images/recent-3.png", date: "07.05.24", href: "#archive" },
-    { label: "VISUAL STUDY 018", sub: "Video Still", img: "/images/recent-4.png", date: "05.05.24", href: "#archive" },
-    { label: "VISUAL STUDY 019", sub: "WW-Helmet", img: "/images/fieldnotes.png", date: "05.05.24", href: "#archive" },
+    { label: "TRUTH", sub: "Breaking point / pattern mapping", img: "/images/recent-1.png", date: "01", href: "/releases/ms-001-pronounced-love" },
+    { label: "REGULATION", sub: "Breath / body awareness / safety", img: "/images/recent-2.png", date: "02", href: "/releases/ms-001-pronounced-love" },
+    { label: "RESPONSIBILITY", sub: "Repair over punishment", img: "/images/recent-3.png", date: "03", href: "/releases/ms-001-pronounced-love" },
+    { label: "IDENTITY", sub: "Discipline / boundaries / honesty", img: "/images/recent-4.png", date: "04", href: "/releases/ms-001-pronounced-love" },
+    { label: "RELATIONSHIP", sub: "Trust / temptation / image", img: "/images/fieldnotes.png", date: "05", href: "/releases/ms-001-pronounced-love" },
+    { label: "RELEASE", sub: "Closure / forgiveness / clean movement", img: "/images/garments.png", date: "08", href: "/releases/ms-001-pronounced-love" },
   ],
 
   contentNotes: [
@@ -91,20 +89,20 @@ export const siteConfig = {
   ],
 
   footer: {
-    description: "An ongoing research system exploring the space between culture, memory, objects, and the future.",
+    description: "A release system for private work, emotional pattern recognition, and clean integration.",
     copyright: "© Muted Science",
     system: [
-      { label: "About", href: "#current" },
+      { label: "Release", href: "#current" },
+      { label: "System", href: "#archive" },
+      { label: "Inside", href: "#releases" },
+      { label: "Acquire", href: "/checkout/ms-001" },
       { label: "Contact", href: "mailto:mutedscience@icloud.com" },
-      { label: "Submissions", href: "mailto:mutedscience@icloud.com?subject=Muted%20Science%20Submission" },
-      { label: "Archive Access", href: "#archive" },
-      { label: "Legal", href: "#index" },
     ],
     connect: [
       { label: "Instagram", href: "https://instagram.com/" },
       { label: "Email", href: "mailto:mutedscience@icloud.com" },
       { label: "Newsletter", href: "mailto:mutedscience@icloud.com?subject=Muted%20Science%20Newsletter" },
-      { label: "Sound System", href: "#releases" },
+      { label: "MS-001", href: "/releases/ms-001-pronounced-love" },
     ],
   },
 };
