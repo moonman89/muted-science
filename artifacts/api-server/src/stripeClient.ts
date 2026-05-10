@@ -1,19 +1,7 @@
 import Stripe from 'stripe';
 
-async function getCredentials(): Promise<{ publishableKey: string; secretKey: string }> {
+async function fetchFromHelium(): Promise<{ publishableKey: string; secretKey: string }> {
   const isProduction = process.env.REPLIT_DEPLOYMENT === '1';
-
-  // In production, env vars are the only source — use them directly.
-  if (isProduction) {
-    const secretKey = process.env.STRIPE_SECRET_KEY;
-    const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
-    if (secretKey && publishableKey) {
-      return { secretKey, publishableKey };
-    }
-  }
-
-  // In dev: always use the Replit connectors proxy so the correct connected
-  // account is used regardless of what is stored in env vars / secrets.
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY
     ? 'repl ' + process.env.REPL_IDENTITY
@@ -22,14 +10,10 @@ async function getCredentials(): Promise<{ publishableKey: string; secretKey: st
       : null;
 
   if (!hostname || !xReplitToken) {
-    throw new Error(
-      'Stripe credentials not found. Set STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY ' +
-      'environment variables, or connect Stripe via the Integrations tab.'
-    );
+    throw new Error('Helium proxy not available');
   }
 
   const targetEnvironment = isProduction ? 'production' : 'development';
-
   const url = new URL(`https://${hostname}/api/v2/connection`);
   url.searchParams.set('include_secrets', 'true');
   url.searchParams.set('connector_names', 'stripe');
@@ -40,27 +24,39 @@ async function getCredentials(): Promise<{ publishableKey: string; secretKey: st
       'Accept': 'application/json',
       'X-Replit-Token': xReplitToken,
     },
-    signal: AbortSignal.timeout(10_000),
+    signal: AbortSignal.timeout(5_000),
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch Stripe credentials: ${response.status} ${response.statusText}`);
+    throw new Error(`Helium responded ${response.status}`);
   }
 
   const data = await response.json();
   const settings = data.items?.[0]?.settings;
 
   if (!settings?.publishable || !settings?.secret) {
-    throw new Error(
-      `Stripe ${targetEnvironment} connection not found or missing keys. ` +
-      'Connect Stripe via the Integrations tab first.'
-    );
+    throw new Error('Helium returned no Stripe keys');
   }
 
-  return {
-    publishableKey: settings.publishable,
-    secretKey: settings.secret,
-  };
+  return { publishableKey: settings.publishable, secretKey: settings.secret };
+}
+
+async function getCredentials(): Promise<{ publishableKey: string; secretKey: string }> {
+  // Try the Replit connectors proxy first (correct account in dev).
+  // Fall back to env vars if helium is unavailable or flaky.
+  try {
+    return await fetchFromHelium();
+  } catch {
+    const secretKey = process.env.STRIPE_SECRET_KEY;
+    const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+    if (secretKey && publishableKey) {
+      return { secretKey, publishableKey };
+    }
+    throw new Error(
+      'Stripe credentials not found. Set STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY ' +
+      'environment variables, or connect Stripe via the Integrations tab.'
+    );
+  }
 }
 
 // WARNING: Never cache this client — tokens expire.
