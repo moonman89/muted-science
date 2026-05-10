@@ -36,15 +36,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      - name: Cache TypeScript build outputs
+      - name: Cache TypeScript build — api-client-react
         uses: actions/cache@v4
         with:
           path: |
-            lib/*/dist
-            **/*.tsbuildinfo
-          key: ${{ runner.os }}-tsbuild-${{ hashFiles('lib/*/src/**', 'lib/*/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+            lib/api-client-react/dist
+            lib/api-client-react/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-api-client-react-${{ hashFiles('lib/api-client-react/src/**', 'lib/api-client-react/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
           restore-keys: |
-            ${{ runner.os }}-tsbuild-
+            ${{ runner.os }}-tsbuild-api-client-react-
+
+      - name: Cache TypeScript build — api-zod
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/api-zod/dist
+            lib/api-zod/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-api-zod-${{ hashFiles('lib/api-zod/src/**', 'lib/api-zod/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsbuild-api-zod-
+
+      - name: Cache TypeScript build — db
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/db/dist
+            lib/db/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-db-${{ hashFiles('lib/db/src/**', 'lib/db/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsbuild-db-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -93,15 +113,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      - name: Cache TypeScript build outputs
+      - name: Cache TypeScript build — api-client-react
         uses: actions/cache@v4
         with:
           path: |
-            lib/*/dist
-            **/*.tsbuildinfo
-          key: ${{ runner.os }}-tsbuild-${{ hashFiles('lib/*/src/**', 'lib/*/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+            lib/api-client-react/dist
+            lib/api-client-react/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-api-client-react-${{ hashFiles('lib/api-client-react/src/**', 'lib/api-client-react/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
           restore-keys: |
-            ${{ runner.os }}-tsbuild-
+            ${{ runner.os }}-tsbuild-api-client-react-
+
+      - name: Cache TypeScript build — api-zod
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/api-zod/dist
+            lib/api-zod/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-api-zod-${{ hashFiles('lib/api-zod/src/**', 'lib/api-zod/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsbuild-api-zod-
+
+      - name: Cache TypeScript build — db
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/db/dist
+            lib/db/*.tsbuildinfo
+          key: ${{ runner.os }}-tsbuild-db-${{ hashFiles('lib/db/src/**', 'lib/db/tsconfig.json', 'tsconfig.base.json', 'tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsbuild-db-
 
       - name: Cache Vite build cache
         uses: actions/cache@v4
