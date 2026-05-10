@@ -8,6 +8,10 @@ import ReleaseMS001 from "@/pages/ReleaseMS001";
 import Checkout from "@/pages/Checkout";
 import Shop from "@/pages/Shop";
 import SystemIndex from "@/pages/SystemIndex";
+import Releases from "@/pages/Releases";
+import Signals from "@/pages/Signals";
+import Objects from "@/pages/Objects";
+import Archive from "@/pages/Archive";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +20,10 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/shop" component={Shop} />
+      <Route path="/releases" component={Releases} />
+      <Route path="/signals" component={Signals} />
+      <Route path="/objects" component={Objects} />
+      <Route path="/archive" component={Archive} />
       <Route path="/system" component={SystemIndex} />
       <Route path="/releases/ms-001-pronounced-love" component={ReleaseMS001} />
       <Route path="/checkout/ms-001" component={Checkout} />
