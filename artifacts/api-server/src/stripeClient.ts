@@ -1,15 +1,19 @@
 import Stripe from 'stripe';
 
 async function getCredentials(): Promise<{ publishableKey: string; secretKey: string }> {
-  // In production (or when keys are pre-loaded as env vars), use them directly.
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+  const isProduction = process.env.REPLIT_DEPLOYMENT === '1';
 
-  if (secretKey && publishableKey) {
-    return { secretKey, publishableKey };
+  // In production, env vars are the only source — use them directly.
+  if (isProduction) {
+    const secretKey = process.env.STRIPE_SECRET_KEY;
+    const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+    if (secretKey && publishableKey) {
+      return { secretKey, publishableKey };
+    }
   }
 
-  // Fallback: fetch via Replit connectors proxy (works in dev container)
+  // In dev: always use the Replit connectors proxy so the correct connected
+  // account is used regardless of what is stored in env vars / secrets.
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY
     ? 'repl ' + process.env.REPL_IDENTITY
@@ -24,7 +28,6 @@ async function getCredentials(): Promise<{ publishableKey: string; secretKey: st
     );
   }
 
-  const isProduction = process.env.REPLIT_DEPLOYMENT === '1';
   const targetEnvironment = isProduction ? 'production' : 'development';
 
   const url = new URL(`https://${hostname}/api/v2/connection`);
