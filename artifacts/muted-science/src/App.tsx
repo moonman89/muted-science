@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import ReleaseMS001 from "@/pages/ReleaseMS001";
 import Checkout from "@/pages/Checkout";
 import Shop from "@/pages/Shop";
+import SystemIndex from "@/pages/SystemIndex";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/shop" component={Shop} />
+      <Route path="/system" component={SystemIndex} />
       <Route path="/releases/ms-001-pronounced-love" component={ReleaseMS001} />
       <Route path="/checkout/ms-001" component={Checkout} />
       <Route component={NotFound} />
